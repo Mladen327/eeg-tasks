@@ -10,6 +10,10 @@
    ========================================================================== */
 const ENCODING_BASE_MS      = 4000;
 const ENCODING_MS_PER_FIELD = 5000;
+// Donja granica faze kodiranja (dugme "Spreman (F2)" ne radi pre nje) --
+// core/block.js (runEncodingWait), ista vrednost kao S1/S2. Gornja granica
+// ostaje encodingDuration (nepromenjena formula ispod).
+const ENCODING_MIN_MS       = 3000;
 const SUGGESTION_LATENCY_MS = 1500;
 const ITEM_GAP_MS           = 1500;
 const PEEK_DURATION_MS      = 3000;
@@ -26,7 +30,7 @@ const BLOCK_DURATION_MS     = 180000;
 const DECISION_MS_PER_FIELD = 3000;
 const ENFORCE_DECISION_DEADLINE = false;
 
-const DEMO_ITEM_CAP = 4;
+const DEMO_ITEM_CAP = 3;
 const WS_PORT = 8765;
 
 // Podrazumevane vrednosti za samostalnu verziju (build_standalone.py) kad
@@ -293,7 +297,7 @@ function cacheEls() {
     "instructions-position", "instructions-title", "instructions-lines", "instructions-selectors",
     "btn-start", "intro-suggestion-note", "select-variant", "select-n",
     "progress-bar", "counter-item", "counter-field",
-    "contract-mount", "encoding-block", "reference-mount", "encoding-countdown",
+    "contract-mount", "encoding-block", "reference-mount", "encoding-countdown", "btn-encoding-ready",
     "verification-block", "btn-peek", "peek-mount",
     "suggestion-panel", "suggestion-loading", "suggestion-text",
     "suggestion-buttons", "btn-accept", "btn-reject",
@@ -592,6 +596,7 @@ function computeRoiAndSendHeader(ctx) {
     roi: { contract: roiRectArray(contractRect), suggestion: roiRectArray(rightColRect) },
     encoding_base_ms: ENCODING_BASE_MS,
     encoding_ms_per_field: ENCODING_MS_PER_FIELD,
+    encoding_min_ms: ENCODING_MIN_MS,
     decision_ms_per_field: DECISION_MS_PER_FIELD,
     enforce_decision_deadline: ENFORCE_DECISION_DEADLINE,
     t0_wall: new Date().toISOString(),
@@ -630,13 +635,21 @@ async function runItem(item, itemIndex, n, variant, suggestionsByItem, isPractic
   renderReferenceInto(els["reference-mount"], item.reference, checkFieldNames);
   highlightContractFields(checkFieldNames, true);
   els["encoding-countdown"].classList.remove("hidden");
+  els["btn-encoding-ready"].classList.remove("hidden");
+  els["btn-encoding-ready"].disabled = true; // do ENCODING_MIN_MS
 
   const encodingDuration = ENCODING_BASE_MS + n * ENCODING_MS_PER_FIELD;
   Logger.log({ event: "encoding_start", item: itemIndex, duration_ms: encodingDuration });
-  await waitFor(encodingDuration, (remaining) => {
-    els["encoding-countdown"].textContent = `Preostalo: ${Math.ceil(remaining / 1000)} s`;
-  });
-  Logger.log({ event: "encoding_end", item: itemIndex });
+
+  const { mode: encodingMode, actualMs: encodingActualMs } = await runEncodingWait(
+    encodingDuration, ENCODING_MIN_MS, els["btn-encoding-ready"], els["encoding-countdown"],
+  );
+
+  Logger.log({ event: "encoding_end", item: itemIndex, encoding_actual_ms: encodingActualMs, mode: encodingMode });
+  if (sessionAborted) return;
+
+  els["encoding-countdown"].classList.add("hidden");
+  els["btn-encoding-ready"].classList.add("hidden");
 
   // --- Faza 2: verifikacija ---
   els["encoding-block"].classList.add("hidden");
@@ -647,7 +660,8 @@ async function runItem(item, itemIndex, n, variant, suggestionsByItem, isPractic
   let peekUsed = false;
   els["btn-peek"].classList.remove("hidden");
   els["btn-peek"].disabled = false;
-  els["btn-peek"].onclick = async () => {
+
+  async function openPeek() {
     if (peekUsed) return;
     peekUsed = true;
     els["btn-peek"].disabled = true;
@@ -656,7 +670,23 @@ async function runItem(item, itemIndex, n, variant, suggestionsByItem, isPractic
     await waitFor(PEEK_DURATION_MS);
     clearMount(els["peek-mount"]);
     Logger.log({ event: "peek_end", item: itemIndex });
+  }
+  els["btn-peek"].onclick = openPeek;
+
+  // F2 ovde ima ISTO znacenje kao "Spreman (F2)" u fazi kodiranja iznad --
+  // upravlja vidljivoscu referentnog zapisa, samo drugim mehanizmom
+  // (jednokratan, vremenski ogranicen uvid umesto potvrde spremnosti).
+  // Listener faze kodiranja je vec skinut UNUTAR runEncodingWait
+  // (cleanupReady(), core/block.js) PRE nego sto se await iznad uopste
+  // nastavlja -- u trenutku kad se OVAJ listener kaci, fazni-1 listener vise
+  // ne postoji, pa jedan pritisak F2 tacno na prelazu ne moze da okine oba
+  // (zatvori kodiranje I odmah potrosi uvid).
+  const f2PeekHandler = (e) => {
+    if (e.key !== "F2") return;
+    e.preventDefault();
+    openPeek();
   };
+  window.addEventListener("keydown", f2PeekHandler);
 
   const fieldsInOrder = item.fields.slice().sort((a, b) => a.order - b.order);
   for (let fi = 0; fi < fieldsInOrder.length; fi++) {
@@ -664,6 +694,7 @@ async function runItem(item, itemIndex, n, variant, suggestionsByItem, isPractic
     await runField(item, itemIndex, fieldsInOrder[fi], fi + 1, fieldsInOrder.length, variant, suggestionsByItem, isPractice);
   }
 
+  window.removeEventListener("keydown", f2PeekHandler);
   els["btn-peek"].classList.add("hidden");
   Logger.log({ event: "item_end", item: itemIndex });
 }

@@ -328,6 +328,10 @@ button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
       <ul id="instructions-lines"></ul>
 
       <div id="instructions-selectors" class="intro-selectors hidden">
+        <p class="intro-note">
+          N označava broj stavki koje istovremeno držite u pamćenju tokom
+          zadatka — to je nivo opterećenja koji se u ovoj studiji menja.
+        </p>
         <label>
           Broj rečenica (N)
           <select id="select-n">
@@ -1532,10 +1536,12 @@ window.__INSTRUCTIONS_EMBEDDED__ = {
       "name": "Provera ugovora",
       "lines": [
         "Videćete nacrt ugovora i referentni zapis pored njega.",
+        "Dok pamtite podatke, tasterom F2 ili dugmetom „Spreman” možete preći dalje čim ste spremni.",
         "Za svako obeleženo polje proverite da li vrednost u ugovoru odgovara referentnom zapisu.",
         "Ako se pojavi predlog sistema, prvo odlučite da li ga prihvatate ili odbijate.",
         "Zatim kliknite na tačnu vrednost među ponuđenim opcijama.",
-        "Referentni zapis možete ponovo pogledati dugmetom na ekranu, jednom po stavci.",
+        "Referentni zapis možete ponovo pogledati tasterom F2 ili dugmetom na ekranu, jednom po stavci.",
+        "Taster F2 u oba dela zadatka upravlja time da li vidite referentni zapis.",
         "Kopiranje i lepljenje teksta nisu mogući."
       ]
     }
@@ -1577,7 +1583,7 @@ const ENCODING_MIN_MS       = 3000;
 const ITEM_GAP_MS           = 1500;
 const BLOCK_DURATION_MS     = 180000;
 
-const DEMO_ITEM_CAP = 4;
+const DEMO_ITEM_CAP = 3;
 const WS_PORT = 8767; // razlicit od s2-demo (8766) i s3-demo (8765), sva tri mogu da rade istovremeno
 
 const EMBEDDED_DEFAULTS = { participant: "DEMO", n: 5, demo: true };

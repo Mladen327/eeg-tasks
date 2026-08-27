@@ -39,7 +39,7 @@ const ENFORCE_CELL_DEADLINE = false;
 // vizuelna povratna informacija se projektuje iznova tada.
 const MAX_SWITCHES_PER_ITEM = null;
 
-const DEMO_ITEM_CAP = 4;
+const DEMO_ITEM_CAP = 3;
 const WS_PORT = 8766; // razlicit od s3-demo (8765) da oba demoa mogu da rade istovremeno
 
 // Podrazumevane vrednosti za samostalnu verziju (standalone/index.html) kad

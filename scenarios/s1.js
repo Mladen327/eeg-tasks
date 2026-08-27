@@ -31,7 +31,7 @@ const ENCODING_MIN_MS       = 3000;
 const ITEM_GAP_MS           = 1500;
 const BLOCK_DURATION_MS     = 180000;
 
-const DEMO_ITEM_CAP = 4;
+const DEMO_ITEM_CAP = 3;
 const WS_PORT = 8767; // razlicit od s2-demo (8766) i s3-demo (8765), sva tri mogu da rade istovremeno
 
 const EMBEDDED_DEFAULTS = { participant: "DEMO", n: 5, demo: true };
