@@ -46,6 +46,28 @@ EEG_TASKS_ROOT = Path(__file__).parent
 N_LEVELS = (3, 5, 7)
 
 
+def load_participant_codes(count: int) -> list[str]:
+    """Sifre ispitanika se NE generisu ovde (ni bilo gde u aplikaciji) --
+    dolaze iz generate_participant_codes.py, odstampane na kartice.
+    items_*.json mora koristiti ISTE sifre koje ce ispitanik uneti na
+    pocetnom ekranu (core/intro.js proverava unos protiv tog istog fajla),
+    inace se sifra ne moze povezati ni sa jednom stavkom."""
+    codes_path = EEG_TASKS_ROOT / "data" / "participant_codes.json"
+    if not codes_path.exists():
+        raise SystemExit(
+            f"PREKID: {codes_path} ne postoji. Sifre se generisu unapred, van aplikacije -- "
+            f"pokreni prvo: python generate_participant_codes.py --count {count} --seed <seed>"
+        )
+    data = json.loads(codes_path.read_text(encoding="utf-8"))
+    codes = data["codes"]
+    if len(codes) < count:
+        raise SystemExit(
+            f"PREKID: trazeno je --participants {count}, ali {codes_path} sadrzi samo "
+            f"{len(codes)} sifri. Ponovo pokreni generate_participant_codes.py sa vecim --count."
+        )
+    return codes[:count]
+
+
 # ==========================================================================
 # Scenario S2 -- premesteno bez izmene ponasanja iz
 # s2-demo/generate_stimuli_s2.py.
@@ -180,7 +202,7 @@ def run_s2(args):
         encoding="utf-8",
     )
 
-    participant_ids = ["DEMO"] + [f"P{i + 1:02d}" for i in range(args.participants)]
+    participant_ids = ["DEMO"] + load_participant_codes(args.participants)
 
     payload = {
         "variant": "S2",
@@ -602,7 +624,7 @@ def run_s3(args):
     # "DEMO" je dodatni, uvek prisutan ucesnik (pored P01..PNN) -- URL rezim
     # ?participant=DEMO&demo=1 i podrazumevane vrednosti u samostalnoj
     # verziji oslanjaju se na njega.
-    participant_ids = ["DEMO"] + [f"P{i + 1:02d}" for i in range(args.participants)]
+    participant_ids = ["DEMO"] + load_participant_codes(args.participants)
 
     for variant in ("S3a", "S3b"):
         payload = {
@@ -787,7 +809,7 @@ def run_s1(args):
     for cls, items in by_class.items():
         print(f"  fond recenica '{cls}': {len(items)}")
 
-    participant_ids = ["DEMO"] + [f"P{i + 1:02d}" for i in range(args.participants)]
+    participant_ids = ["DEMO"] + load_participant_codes(args.participants)
 
     payload = {
         "variant": "S1",

@@ -29,12 +29,17 @@ NE dodiruje `../s3-demo` uopšte; ako `data/excluded_companies.json` ne
 postoji, prekida se sa jasnom porukom umesto da tiho generiše bez
 iskljucivanja.
 
+`server.py`-jev staticki koren je `eeg-tasks/` (roditelj s2-demo/), ne
+s2-demo/ sam -- `app/index.html` ucitava deljeni `core/` i `data/` preko
+`"../../"`, pa URL uvek nosi `/s2-demo/` prefiks (ranije je nedostajao,
+davao je 404 na core/*.js -- ispravljeno).
+
 Otvoriti u pregledaču, na primer:
 
 ```
-http://localhost:8000/app/index.html?participant=P07&n=5
-http://localhost:8000/app/index.html?participant=DEMO&n=5&demo=1
-http://localhost:8000/app/index.html?practice=1
+http://localhost:8000/s2-demo/app/index.html?participant=P07&n=5
+http://localhost:8000/s2-demo/app/index.html?participant=DEMO&n=5&demo=1
+http://localhost:8000/s2-demo/app/index.html?practice=1
 ```
 
 `server.py` zahteva paket `websockets` (`pip install websockets`). Bez njega

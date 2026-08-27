@@ -14,12 +14,17 @@ python generate_stimuli.py --seed 20260825 --participants 40   # jednom, ili pos
 python server.py                                                # http :8000, ws :8765
 ```
 
+`server.py`-jev staticki koren je `eeg-tasks/` (roditelj s3-demo/), ne
+s3-demo/ sam -- `app/index.html` ucitava deljeni `core/` i `data/` preko
+`"../../"`, pa URL uvek nosi `/s3-demo/` prefiks (ranije je nedostajao,
+davao je 404 na core/*.js -- ispravljeno).
+
 Otvoriti u pregledaču, na primer:
 
 ```
-http://localhost:8000/app/index.html?participant=P07&variant=S3b&n=5
-http://localhost:8000/app/index.html?participant=DEMO&variant=S3b&n=5&demo=1
-http://localhost:8000/app/index.html?practice=1
+http://localhost:8000/s3-demo/app/index.html?participant=P07&variant=S3b&n=5
+http://localhost:8000/s3-demo/app/index.html?participant=DEMO&variant=S3b&n=5&demo=1
+http://localhost:8000/s3-demo/app/index.html?practice=1
 ```
 
 `server.py` zahteva paket `websockets` (`pip install websockets`). Bez

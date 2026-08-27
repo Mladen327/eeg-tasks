@@ -50,15 +50,29 @@ button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
   align-items: center;
 }
 
+/* Centriranje uvodnih/zavrsnih ekrana (integracija sesije, tacka 6):
+   .intro-box se koristi ISKLJUCIVO na ta cetiri ekrana (pocetni, pregled
+   sesije, uputstvo, kraj) -- #screen-task ima potpuno drugaciju strukturu
+   (header + #stage), izmena ovde ga ne dodiruje. Uspravno centriranje je
+   na .screen (justify-content, ispod), ne ovde -- fiksne margine su
+   namerno uklonjene da bi radilo na razlicitim visinama ekrana. */
 .intro-box {
+  width: 100%;
   max-width: 640px;
-  margin-top: 10vh;
   padding: 32px;
   background: var(--panel-bg);
   border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
 }
-.intro-box h1 { margin-top: 0; }
-.intro-box button { margin-top: 16px; }
+.intro-box > * { margin: 0; }
+.intro-box button { align-self: center; }
+
+#screen-global-intro, #screen-session-overview, #screen-instructions, #screen-end {
+  justify-content: center;
+}
 
 /* ---- ekrani 1/2/3, zajednicki za S1/S2/S3 (core/intro.js) ---- */
 
@@ -77,6 +91,11 @@ button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
   border: 1px solid var(--border);
   background: #fff;
   color: var(--text);
+}
+.intro-error {
+  margin-top: 8px;
+  color: var(--danger);
+  font-size: 14px;
 }
 .intro-known-value {
   margin-top: 8px;

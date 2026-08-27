@@ -27,6 +27,7 @@ import http.server
 import json
 import socketserver
 import threading
+import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -42,8 +43,18 @@ except ImportError:
     HAVE_LSL = False
 
 ROOT = Path(__file__).parent
+# app/index.html ucitava deljeni core/ i data/instructions.json/
+# participant_codes.json preko "../../" (SPEC_refaktor_jezgro.md) -- pravi
+# koren za staticku poslugu je zato roditelj s2-demo/ (eeg-tasks/), ne
+# s2-demo/ sam. Bez ovoga core/*.js daje 404 kad se server pokrene po
+# dokumentovanom "python server.py" iz s2-demo/ (nadjeno rucnim testom).
+STATIC_ROOT = ROOT.parent
 LOGS_DIR = ROOT / "logs"
 LOGS_PRACTICE_DIR = LOGS_DIR / "practice"
+# "DEMO" (core/intro.js: rezervisana, van dozvoljenog skupa
+# generate_participant_codes.py) -- probne datoteke se cuvaju odvojeno od
+# pravih ucesnika (uputstvo, tacka 6), isti obrazac kao logs/practice/.
+LOGS_DEMO_DIR = LOGS_DIR / "demo"
 
 
 class SessionLogWriter:
@@ -67,7 +78,12 @@ class SessionLogWriter:
         variant = header.get("variant", "unknown")
         n = header.get("n_fields", "x")
         timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        folder = LOGS_PRACTICE_DIR if variant == "practice" else LOGS_DIR
+        if variant == "practice":
+            folder = LOGS_PRACTICE_DIR
+        elif participant == "DEMO":
+            folder = LOGS_DEMO_DIR
+        else:
+            folder = LOGS_DIR
         folder.mkdir(parents=True, exist_ok=True)
         self.path = folder / f"{participant}_{variant}_{n}_{timestamp}.jsonl"
         self.file = self.path.open("a", encoding="utf-8")
@@ -129,14 +145,41 @@ async def ws_handler(lsl: LslForwarder, websocket):
         print(f"[ws] veza zatvorena: {peer}")
 
 
+class ApiHandler(http.server.SimpleHTTPRequestHandler):
+    """Dodaje TACNO jednu rutu (/api/session-count) preko staticke posluge
+    -- core/intro.js je koristi da odredi redni broj sesije (1/2/3) za
+    unetu sifru, jer to jedino server moze da vidi (postojeci fajlovi u
+    logs/). Sve ostalo ide na SimpleHTTPRequestHandler bez izmene."""
+
+    def do_GET(self):
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/session-count":
+            self._session_count(parsed)
+            return
+        super().do_GET()
+
+    def _session_count(self, parsed):
+        qs = urllib.parse.parse_qs(parsed.query)
+        code = (qs.get("code") or [""])[0].strip().upper()
+        count = 0
+        if code and code != "DEMO" and LOGS_DIR.exists():
+            count = sum(1 for p in LOGS_DIR.glob(f"{code}_*.jsonl") if p.is_file())
+        body = json.dumps({"count": count}).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+
 def run_http_server(port: int):
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(ROOT))
+    handler = functools.partial(ApiHandler, directory=str(STATIC_ROOT))
 
     class ThreadingHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
         daemon_threads = True
 
     httpd = ThreadingHTTPServer(("0.0.0.0", port), handler)
-    print(f"[http] staticki fajlovi na http://localhost:{port}/app/index.html")
+    print(f"[http] staticki fajlovi na http://localhost:{port}/s2-demo/app/index.html")
     httpd.serve_forever()
 
 

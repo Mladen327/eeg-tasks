@@ -1,2 +1,4 @@
 __pycache__/
-logs/**/*.jsonl
+logs/
+data/participant_codes.json
+data/codes_printable.html

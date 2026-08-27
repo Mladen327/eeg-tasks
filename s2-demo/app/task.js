@@ -212,8 +212,8 @@ const els = {};
 function cacheEls() {
   [
     "screen-loading", "screen-global-intro", "screen-session-overview", "screen-instructions",
-    "screen-task", "screen-gap", "screen-end", "screen-end-title", "screen-end-message",
-    "global-intro-title", "global-intro-input", "global-intro-display", "btn-global-intro-next",
+    "screen-task", "screen-gap", "screen-end", "screen-end-title", "screen-end-message", "btn-end-next",
+    "global-intro-title", "global-intro-input", "global-intro-error", "global-intro-display", "btn-global-intro-next",
     "session-overview-summary", "session-overview-list", "btn-session-overview-next",
     "instructions-position", "instructions-title", "instructions-lines", "instructions-selectors",
     "btn-start", "select-n",
@@ -239,13 +239,56 @@ async function main() {
   cacheEls();
   const params = parseParams();
   const embedded = isEmbedded();
+  const isPracticeParam = !!params.practice;
 
-  // Ekran 1 (core/intro.js) treba da zna sifru ispitanika PRE
-  // resolveParamsCore -- videti napomenu u scenarios/s1.js main() (isti
-  // obrazac u sva tri scenarija). Vezba je izuzeta.
-  if (!params.practice) {
+  let instructionsData;
+  try {
+    instructionsData = await fetchInstructions(`../../data/instructions.json`);
+  } catch (err) {
+    showFatal(`Greska pri ucitavanju uputstva: ${err.message}`);
+    return;
+  }
+
+  // Integracija sesije (core/intro.js): SAMO server rezim, van vezbe, i
+  // SAMO kad URL NE daje eksplicitan participant -- pilot/debag preko
+  // eksplicitnog URL parametra ostaje pojedinacan zadatak, nepromenjeno
+  // (uputstvo: "Zadrzi mogucnost pokretanja pojedinacnog zadatka...").
+  const orchestrated = !embedded && !isPracticeParam && !params.participant;
+  let session = null;
+  let order = DEFAULT_TASK_ORDER;
+
+  if (orchestrated) {
+    let codesData;
+    try {
+      codesData = await fetchParticipantCodes(`../../data/participant_codes.json`);
+    } catch (err) {
+      showFatal(`Greska pri ucitavanju liste sifri: ${err.message}`);
+      return;
+    }
+    const orch = await runSessionOrchestration(TASK_ID, codesData, instructionsData);
+    if (orch.redirected) return;
+    session = orch.session;
+    order = session.order;
+    params.participant = session.code;
+    params.n = session.n;
+  } else if (!isPracticeParam) {
+    // Pojedinacan zadatak (pilot/debag preko eksplicitnog URL parametra,
+    // ili ugradjeni/demo rezim) -- isti tok kao pre integracije sesije.
+    let codeValidator = null;
+    if (!embedded) {
+      let codesData;
+      try {
+        codesData = await fetchParticipantCodes(`../../data/participant_codes.json`);
+      } catch (err) {
+        showFatal(`Greska pri ucitavanju liste sifri: ${err.message}`);
+        return;
+      }
+      codeValidator = createCodeValidator(codesData);
+    }
     const known = params.participant || (embedded ? EMBEDDED_DEFAULTS.participant : null);
-    params.participant = await runGlobalIntroScreen(known);
+    const codeResult = await runGlobalIntroScreen(known, codeValidator);
+    params.participant = codeResult.code;
+    await runSessionOverviewScreen(instructionsData);
   }
 
   const resolved = resolveParamsCore(params, embedded, EMBEDDED_DEFAULTS, {
@@ -258,10 +301,9 @@ async function main() {
   const isPractice = resolved.isPractice, participantId = resolved.participantId, isDemo = resolved.isDemo;
   let n = resolved.n;
 
-  let itemsData, itemsHash, companiesHash, instructionsData;
+  let itemsData, itemsHash, companiesHash;
   try {
     ({ itemsData, itemsHash, companiesHash } = await fetchItemsAndHashes());
-    instructionsData = await fetchInstructions(`../../data/instructions.json`);
   } catch (err) {
     showFatal(`Greska pri ucitavanju podataka: ${err.message}`);
     return;
@@ -283,20 +325,21 @@ async function main() {
   if (earlySend) {
     measureWhileVisible("task", () => computeRoiAndSendHeader({
       participantId, variant: isPractice ? "practice" : "S2", n, itemsHash, companiesHash, seed: itemsData.seed,
+      ...sessionLogFields(session, order, TASK_ID),
     }));
   }
 
-  if (!isPractice) {
-    await runSessionOverviewScreen(instructionsData);
-  }
-  await runInstructionsScreen(instructionsData, TASK_ID, {
+  await runInstructionsScreen(order, instructionsData, TASK_ID, {
     showSelectors: embedded && !isPractice,
     isPractice,
   });
 
   if (embedded && !isPractice) {
     n = parseInt(els["select-n"].value, 10);
-    computeRoiAndSendHeader({ participantId, variant: "S2", n, itemsHash, companiesHash, seed: itemsData.seed });
+    computeRoiAndSendHeader({
+      participantId, variant: "S2", n, itemsHash, companiesHash, seed: itemsData.seed,
+      ...sessionLogFields(session, order, TASK_ID),
+    });
   }
 
   if (!isPractice) {
@@ -304,7 +347,7 @@ async function main() {
     if (isDemo) items = items.slice(0, DEMO_ITEM_CAP);
   }
 
-  applyEndScreenText(instructionsData, TASK_ID, isPractice);
+  applyEndScreenText(order, instructionsData, TASK_ID, isPractice, session);
 
   showScreen("task");
   await runBlock({
@@ -390,6 +433,12 @@ function computeRoiAndSendHeader(ctx) {
     seed: ctx.seed,
     items_hash: ctx.itemsHash,
     companies_hash: ctx.companiesHash,
+    // Integracija sesije, tacka 5 odobrenja: session_id + redosled/pozicija
+    // zadatka + redni broj posete -- videti core/intro.js sessionLogFields().
+    session_id: ctx.session_id,
+    task_order: ctx.task_order,
+    task_position: ctx.task_position,
+    visit_number: ctx.visit_number,
     screen: { w: window.screen.width, h: window.screen.height },
     roi: { document: roiRectArray(stageRect), spreadsheet: roiRectArray(stageRect) },
     encoding_base_ms: ENCODING_BASE_MS,

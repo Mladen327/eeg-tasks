@@ -17,6 +17,15 @@ Upotreba:
     python analyze_log.py s2-demo/logs/*.jsonl
     python analyze_log.py s3-demo/logs/*.jsonl --detail
     python analyze_log.py s3-demo/logs/P07_S3b_5_20260825T101403Z.jsonl
+    python analyze_log.py --session 2CRD_20260827T143806Z
+
+--session ucitava celu sesiju (integracija sesije, tacka 4/5 odobrenja):
+skenira logs/, s2-demo/logs/ i s3-demo/logs/ (samo direktan sadrzaj, ne
+practice/ ni demo/ poddirektorijume), pronalazi sve blokove sa zadatim
+session_id, ispisuje zbirni pregled sva tri zadatka jedan pored drugog i
+jasno prijavljuje nedostajuci zadatak kao ocekivano stanje (prekinuta
+sesija), a zatim nastavlja sa punom postojecom analizom za svaki zadatak
+koji jeste prisutan.
 """
 
 from __future__ import annotations
@@ -33,6 +42,18 @@ from pathlib import Path
 from shared import analyze_common as ac
 
 EEG_TASKS_ROOT = Path(__file__).parent
+
+# Integracija sesije, tacka 4/5 odobrenja (core/intro.js sessionLogFields):
+# tri zadatka jedne sesije zive kao tri odvojena .jsonl fajla, u tri
+# odvojena projektna direktorijuma, povezana samo zajednickim session_id u
+# svakom zaglavlju. --session skenira ova tri mesta (samo direktan sadrzaj,
+# NE practice/ ni demo/ poddirektorijume -- orkestrirana sesija nikad ne
+# pise u njih) i sastavlja ih nazad u jedan pregled.
+SESSION_LOG_DIRS = [
+    EEG_TASKS_ROOT / "logs",
+    EEG_TASKS_ROOT / "s2-demo" / "logs",
+    EEG_TASKS_ROOT / "s3-demo" / "logs",
+]
 
 
 # ==========================================================================
@@ -1846,9 +1867,83 @@ def s1_source_confound_check(resolved):
 # main -- grupise blokove po session["scenario"] i grana se.
 # ==========================================================================
 
+def session_normalize_scenario(scen):
+    """S3a/S3b su varijante istog zadatka -- za potrebe provere prisustva u
+    sesiji (jedan zadatak S3 po sesiji, ne dva) racunaju se kao "S3"."""
+    if scen in ("S3a", "S3b"):
+        return "S3"
+    return scen
+
+
+def find_session_logfiles():
+    paths = []
+    for d in SESSION_LOG_DIRS:
+        if d.is_dir():
+            paths.extend(sorted(d.glob("*.jsonl")))
+    return paths
+
+
+def print_session_summary(session_id, blocks):
+    """Tacka 4/5 odobrenja integracije sesije: zbirni prikaz sva tri zadatka
+    jedan pored drugog, sa jasnom prijavom nedostajuceg zadatka -- to NIJE
+    greska, nego ocekivano stanje kad ispitanik prekine sesiju."""
+    by_task = {}
+    for path, session, events in blocks:
+        if session is None:
+            continue
+        scen = session_normalize_scenario(session.get("scenario"))
+        by_task[scen] = (path, session, events)
+
+    ref_session = next(iter(by_task.values()))[1]
+    code = ref_session.get("participant_id")
+    task_order = ref_session.get("task_order") or []
+    visit_number = ref_session.get("visit_number")
+    order = task_order or ["S1", "S2", "S3"]
+
+    print("=" * 72)
+    print(f"PREGLED SESIJE  (--session {session_id})")
+    print("=" * 72)
+    print(f"sifra ispitanika:  {code}")
+    print(f"redosled zadataka: {' -> '.join(order)}" if task_order else
+          "redosled zadataka: (nepoznat -- header ne sadrzi task_order)")
+    print(f"redni broj posete: {visit_number if visit_number is not None else '(nepoznat)'}")
+    print("-" * 72)
+
+    missing = []
+    for i, task in enumerate(order, start=1):
+        entry = by_task.get(task)
+        if entry is None:
+            missing.append(task)
+            print(f"  {i}. {task}: NEDOSTAJE u ovoj sesiji.")
+            continue
+        path, session, events = entry
+        ts = [e["t"] for e in events if e.get("t") is not None]
+        dur = f"{(max(ts) - min(ts)) / 1000:.1f}s" if len(ts) >= 2 else "n/a"
+        print(f"  {i}. {task}: prisutan -- {path.name}  "
+              f"({len(events)} dogadjaja, trajanje ~{dur}, "
+              f"task_position={session.get('task_position')})")
+
+    print("-" * 72)
+    if missing:
+        print(f"NAPOMENA: nedostaje {len(missing)} od {len(order)} zadatka u sesiji "
+              f"({', '.join(missing)}). Ovo nije greska logovanja -- ocekivano je kad "
+              f"ispitanik prekine sesiju pre kraja. Analiza ispod obuhvata samo prisutne "
+              f"zadatke.")
+    else:
+        print("Sva tri zadatka sesije su prisutna.")
+    print("=" * 72)
+    print()
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("logfiles", nargs="+", type=Path)
+    ap.add_argument("logfiles", nargs="*", type=Path)
+    ap.add_argument("--session", type=str,
+                     help="Ucitaj celu sesiju po session_id umesto pojedinacnih logfiles -- "
+                          "skenira logs/, s2-demo/logs/, s3-demo/logs/ (integracija sesije, "
+                          "tacka 4/5), ispisuje zbirni pregled sva tri zadatka jedan pored "
+                          "drugog i jasno prijavljuje nedostajuci zadatak, pa nastavlja sa "
+                          "punom analizom za svaki prisutan zadatak.")
     ap.add_argument("--data", type=Path,
                      help="Podrazumevano: s2-demo/data odn. s3-demo/data u odnosu na ovaj fajl, "
                           "zavisno od scenarija otkrivenog u svakoj grupi blokova.")
@@ -1859,7 +1954,22 @@ def main():
                           "broj povrataka/uvida pre unosa)")
     args = ap.parse_args()
 
-    blocks = ac.load_events(args.logfiles)
+    if args.session:
+        if args.logfiles:
+            print("UPOZORENJE: logfiles se ignorisu kad je naveden --session.", file=sys.stderr)
+        candidate_paths = find_session_logfiles()
+        all_blocks = ac.load_events(candidate_paths)
+        blocks = [b for b in all_blocks if b[1] and b[1].get("session_id") == args.session]
+        if not blocks:
+            searched = ", ".join(str(d) for d in SESSION_LOG_DIRS)
+            print(f"GRESKA: nijedan log sa session_id={args.session!r} nije pronadjen "
+                  f"(pretrazeno: {searched}).", file=sys.stderr)
+            sys.exit(1)
+        print_session_summary(args.session, blocks)
+    elif not args.logfiles:
+        ap.error("navedi logfiles ili --session")
+    else:
+        blocks = ac.load_events(args.logfiles)
 
     by_scenario = defaultdict(list)
     for b in blocks:
