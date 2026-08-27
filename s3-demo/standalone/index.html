@@ -1409,6 +1409,36 @@ async function loadSessionStateFromDb(code) {
   }
 }
 
+// Zavrsetak POSLEDNJEG zadatka u redosledu sesije (applyEndScreenText,
+// grana "Kraj sesije") nikad nije upisivao taj zadatak u session.completed
+// niti brisao sacuvano stanje -- sessionStorage/IndexedDB su zauvek
+// ostajali sa completed:[...bez poslednjeg], kao da je sesija jos "u toku".
+// Ponovna poseta ISTOJ kartici na app/index.html (npr. voditelj demonstracije
+// osvezi stranicu za sledeceg posetioca) je zato tumacena kao nastavak te
+// "nezavrsene" sesije i preusmeravala je pravo na poslednji zadatak --
+// ISTI simptom kao IndexedDB oporavak za DEMO (runSessionOrchestration), ali
+// kroz sessionStorage, u jednoj kartici, bez ikakvog zatvaranja/ponovnog
+// otvaranja. Poziva se JEDNOM, posle stvarnog zavrsetka bloka (main() u
+// svakom scenariju, posle await runBlock(...)), ne iz applyEndScreenText
+// (koja se postavlja PRE bloka, radi izbegavanja bljeska teksta).
+function clearSessionStateIfFinished(session, order, taskId) {
+  if (!session || order[order.length - 1] !== taskId) return;
+  try { sessionStorage.removeItem(SESSION_STORAGE_KEY); } catch (e) {
+    // privatni rezim pregledaca i sl.
+  }
+  deleteSessionStateFromDb(session.code); // best-effort, ne cekamo
+}
+
+async function deleteSessionStateFromDb(code) {
+  try {
+    const db = await openSessionDb();
+    const tx = db.transaction(SESSION_DB_STORE, "readwrite");
+    tx.objectStore(SESSION_DB_STORE).delete(code);
+  } catch (e) {
+    // best-effort
+  }
+}
+
 /* runSessionOrchestration(taskId, codesData, instructionsData): poziva se
    SAMO kad je server rezim, van vezbe, i URL NE daje eksplicitan
    ?participant= (pilot/debag uslov ostaje van ove funkcije, u main()
@@ -2073,6 +2103,7 @@ async function main() {
     companiesHash,
     seed: itemsData.seed,
   });
+  clearSessionStateIfFinished(session, order, TASK_ID);
 }
 
 // showFatal sada dolazi iz core/screen.js.
