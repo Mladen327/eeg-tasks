@@ -818,7 +818,8 @@ def main():
     items_data = load_items(args.data)
     if items_data is None:
         print(f"UPOZORENJE: {args.data / 'items_S2.json'} ne postoji -- tacnost i tipologija "
-              f"gresaka ce biti preskoceni (pokreni prvo generate_stimuli_s2.py).", file=sys.stderr)
+              f"gresaka ce biti preskoceni (pokreni prvo, iz korena repozitorijuma, "
+              f"python generate_stimuli.py --scenario S2).", file=sys.stderr)
     ref_index = build_reference_index(items_data) if items_data else {}
 
     analyze(blocks, ref_index, detail=args.detail)

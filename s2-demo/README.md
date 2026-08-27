@@ -10,16 +10,16 @@ razrešiti da bi uputstvo bilo izvodljivo.
 (`data/companies.json`) se generiše lokalno, iz istog seed-a. Jedina veza sa
 s3-demo-om je jednokratan, eksplicitan korak koji pravi lokalni snimak
 iskljucenih firmi (`data/excluded_companies.json`) -- posle njega,
-`generate_stimuli_s2.py` više nikad ne dodiruje `../s3-demo`. Videti
-"Zajednička baza firmi sa Scenarijem 3" niže.
+`generate_stimuli.py --scenario S2` više nikad ne dodiruje `../s3-demo`.
+Videti "Zajednička baza firmi sa Scenarijem 3" niže.
 
 ## Pokretanje
 
 ```
+python generate_stimuli.py --scenario S2 --snapshot-exclusions s3-demo/data/items_S3b.json   # JEDNOM, iz korena repozitorijuma
+python generate_stimuli.py --scenario S2 --seed 20260825 --participants 40                     # isti --seed kao s3-demo!
 cd s2-demo
-python generate_stimuli_s2.py --snapshot-exclusions ../s3-demo/data/items_S3b.json   # JEDNOM
-python generate_stimuli_s2.py --seed 20260825 --participants 40                       # isti --seed kao s3-demo!
-python server.py                                                                      # http :8000, ws :8766
+python server.py                                                                                # http :8000, ws :8766
 ```
 
 Prvi poziv (`--snapshot-exclusions`) se ponavlja samo ako se `s3-demo`
@@ -77,7 +77,7 @@ vrednosti N) i celim `task.js`/`style.css` ugrađenim direktno u fajl.
 Otvara se dvoklikom (`file://`), radi bez mreže.
 
 ```
-python generate_stimuli_s2.py --seed 20260825 --participants 40   # ako vec nije pokrenuto
+python ../generate_stimuli.py --scenario S2 --seed 20260825 --participants 40   # ako vec nije pokrenuto
 python build_standalone_s2.py
 ```
 
@@ -117,10 +117,11 @@ budu **disjunktni skupovi** (inače bi ponovni susret sa istom firmom bio
 lakši zbog poznavanja materijala -- lažni efekat u matrici prenosa).
 
 Da bi iskljucivanje po `company_id` uopšte imalo smisla, `"C047"` mora da
-označava **istu firmu** u oba projekta. Zato `generate_stimuli_s2.py`
-sadrži `gen_companies()` koja je **bajt-identična** funkciji istog imena u
-`s3-demo/generate_stimuli.py` (iste fiksne liste, isti redosled `rng.*`
-poziva -- uključujući polja koja S2 uopšte ne koristi, npr.
+označava **istu firmu** u oba projekta. To više nije pitanje dve odvojene,
+ručno usklađene kopije koda -- `gen_companies()` živi jednom, u
+`shared/generate_common.py`, i konsolidovani `generate_stimuli.py` je zove
+identično za `--scenario S2` i `--scenario S3` (iste fiksne liste, isti
+redosled `rng.*` poziva -- uključujući polja koja S2 uopšte ne koristi, npr.
 `contract_number`, `employee_count`; ona su zadržana u `companies.json`
 isključivo da bi redosled povlačenja iz generatora ostao identičan S3-u).
 Za **isti `--seed`**, `s2-demo/data/companies.json` i `s3-demo/data/companies.json`
@@ -129,9 +130,10 @@ su bajt-identični za deljena polja -- provereno automatski (videti niže).
 **Iskljucivanje je dvokoračno, sa jasnom granicom oko toga ko sme da dodirne
 `../s3-demo`:**
 
-1. **Jednokratan snimak** (jedino mesto koje čita iz s3-demo-a):
+1. **Jednokratan snimak** (jedino mesto koje čita iz s3-demo-a), iz korena
+   repozitorijuma:
    ```
-   python generate_stimuli_s2.py --snapshot-exclusions ../s3-demo/data/items_S3b.json
+   python generate_stimuli.py --scenario S2 --snapshot-exclusions s3-demo/data/items_S3b.json
    ```
    Ovo učitava `items_S3b.json`, gradi
    `{participant_id: [company_id koje je taj ucesnik video u S3b]}` (unija
@@ -187,7 +189,7 @@ niske težine. Kao i u s3-demo (videti `s3-demo/README.md`), `street_number`
 je ovde izdvojen kao svoje polje niske težine (kratak broj bez značenja,
 lako se pamti pogrešno), dok `street` ostaje srednje. Rezultat: 2 visoka /
 3 srednja / 3 niska polja, tačno pokriva N=3/5/7. Videti komentar u
-`generate_stimuli_s2.py` uz `FIELD_WEIGHT`. Posledica ove podele: u
+`generate_stimuli.py` uz `S2_FIELD_WEIGHT`. Posledica ove podele: u
 Prozoru B, "ulica" i "broj" se pojavljuju kao dve odvojene kolone kad su
 oba deo iste stavke (nikad oba istovremeno, pošto su u različitim klasama
 težine i mogu ali ne moraju biti izabrani zajedno).
@@ -370,15 +372,15 @@ python analyze_log_s2.py --detail logs/*.jsonl
   imati na umu da je po stavci znatno duže nego u s3-demo-u (npr. N=7 samo
   faza kodiranja traje do 39s ako se ne završi ranije dugmetom "Spreman"),
   pa ceo demo blok na N=7 može trajati više minuta.
-- `ITEMS_PER_BLOCK`, `PRACTICE_ITEMS`, `PRACTICE_N` -- vrh
-  `generate_stimuli_s2.py`. `ITEMS_PER_BLOCK=30` je namerno velikodušno --
+- `S2_ITEMS_PER_BLOCK`, `S2_PRACTICE_ITEMS`, `S2_PRACTICE_N` -- vrh S2 dela
+  u `generate_stimuli.py`. `S2_ITEMS_PER_BLOCK=30` je namerno velikodušno --
   koliko se stavki stvarno završi u `BLOCK_DURATION_MS=180000` zavisi
   mnogo od N (mnogo manje nego u s3-demo-u, gde je po stavci brže), ali
   višak samo znači da nikad neće "ponestati" stavki pre isteka bloka.
 - `SWITCH_MAX_DEVIATION_WARN_MS` (prag upozorenja u `analyze_log_s2.py`,
   sekcija 10 traži 50 ms; u testiranju u Chromium izmereno maksimalno
   odstupanje ~16 ms).
-- `--seed` u `generate_stimuli_s2.py` **mora** ostati usklađen sa onim
-  korišćenim za `s3-demo/generate_stimuli.py` da bi baza firmi ostala
-  ista (videti "Zajednička baza firmi sa Scenarijem 3" gore) -- ako se
-  seed za S3 ikad promeni, ponovo generisati i S2 sa istim novim seedom.
+- `--seed` za `generate_stimuli.py --scenario S2` **mora** ostati usklađen
+  sa onim korišćenim za `--scenario S3` da bi baza firmi ostala ista
+  (videti "Zajednička baza firmi sa Scenarijem 3" gore) -- ako se seed za
+  S3 ikad promeni, ponovo generisati i S2 sa istim novim seedom.

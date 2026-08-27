@@ -9,9 +9,9 @@ izvodljivo.
 ## Pokretanje
 
 ```
+python generate_stimuli.py --scenario S3 --seed 20260825 --participants 40   # iz korena repozitorijuma, jednom ili posle svake izmene liste ucesnika
 cd s3-demo
-python generate_stimuli.py --seed 20260825 --participants 40   # jednom, ili posle svake izmene liste ucesnika
-python server.py                                                # http :8000, ws :8765
+python server.py                                                              # http :8000, ws :8765
 ```
 
 `server.py`-jev staticki koren je `eeg-tasks/` (roditelj s3-demo/), ne
@@ -67,7 +67,7 @@ ugradjenim direktno u fajl. Otvara se dvoklikom (`file://`), radi bez
 mreze i bez ijedne spoljne zavisnosti.
 
 ```
-python generate_stimuli.py --seed 20260825 --participants 40   # ako vec nije pokrenuto
+python ../generate_stimuli.py --scenario S3 --seed 20260825 --participants 40   # ako vec nije pokrenuto
 python build_standalone.py
 ```
 
@@ -92,8 +92,9 @@ Ovo pravilo vazi samo kad su podaci ugradjeni (`window.__S3_EMBEDDED__`)
 — isti `app/task.js` na serveru i dalje trazi pune parametre, jer je tamo
 tiho podrazumevanje rizicnije (moglo bi da upise podatke pod pogresnim
 `participant`/`variant` u pravoj sesiji). Iz istog razloga je generator
-dobio dodatnog ucesnika `"DEMO"` (pored `P01..PNN`) u
-`generate_stimuli.py`, na koga se podrazumevana vrednost oslanja.
+dobio dodatnog ucesnika `"DEMO"` (pored stvarnih sifri ucitanih iz
+`participant_codes.json`) u `generate_stimuli.py`, na koga se podrazumevana
+vrednost oslanja.
 
 Razlike u odnosu na server verziju:
 - `fetch()` poziva nema uopste (blokirani su CORS politikom za `file://`);
@@ -119,7 +120,7 @@ za N=7, koje traži tri. Sekcija 4 uputstva ionako već tretira `street` i
 pa su ovde razdvojena i u klasifikaciji: `street` ostaje srednje,
 `street_number` prelazi u nisku težinu. Rezultat je čist raspored 3
 visoka/3 srednja/3 niska koji tačno pokriva N=3/5/7 bez ijednog novog
-polja. Vidi komentar u `generate_stimuli.py` uz `FIELD_WEIGHT`.
+polja. Vidi komentar u `generate_stimuli.py` uz `S3_FIELD_WEIGHT`.
 
 **2. Vremenski limit po polju u fazi verifikacije (sekcija 6.1) — REVIDIRANO.**
 Uputstvo kaže "vremenski limit po polju ostaje na snazi" ali ga nikad ne
@@ -192,8 +193,8 @@ na ugovoru — tautologija, ne otkriva odstupanje. Vidi komentar u
   (`encoding_base_ms`, `encoding_ms_per_field`, `decision_ms_per_field`,
   `enforce_decision_deadline`), pa se za svaki snimljeni blok tačno zna
   pod kojim je tajmingom/režimom sniman.
-- `ITEMS_PER_BLOCK` (koliko stavki se unapred generiše po bloku, sekcija
-  generatora) i `SUGGESTION_QUOTAS` / `WARM_UP_FIELDS` — vrh
+- `S3_ITEMS_PER_BLOCK` (koliko stavki se unapred generiše po bloku, sekcija
+  generatora) i `S3_SUGGESTION_QUOTAS` / `S3_WARM_UP_FIELDS` — S3 deo
   `generate_stimuli.py`.
 - `LATENCY_MAX_DEVIATION_WARN_MS` (prag upozorenja u `analyze_log.py`,
   sekcija 10 traži 50 ms).

@@ -5,7 +5,8 @@ politikom pregledaca). Analogno s3-demo/build_standalone.py.
 
 Ulaz: app/index.html, app/style.css, app/task.js,
       data/document_template.html, data/items_S2.json
-      (svi moraju vec postojati -- pokrenuti prvo generate_stimuli_s2.py).
+      (svi moraju vec postojati -- pokrenuti prvo, iz korena repozitorijuma,
+      python generate_stimuli.py --scenario S2).
 
 Izlaz: standalone/index.html
 
