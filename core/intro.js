@@ -43,12 +43,37 @@
 
 const STUDY_TITLE = "Merenje kognitivnog opterećenja u kancelarijskim zadacima";
 
-// Apsolutne putanje (od korena porekla) -- ispravne bez obzira sa koje od
-// tri stranice se navigira, JER sve tri sad moraju biti posluzene sa ISTOG
-// porekla (isti host:port) da bi sessionStorage/IndexedDB uopste mogli da
-// prezive navigaciju medju njima (server.py root-fix, videti README-ove).
+// Putanje OD KORENA SAJTA -- ispravne bez obzira sa koje od tri stranice se
+// navigira, JER sve tri sad moraju biti posluzene sa ISTOG porekla (isti
+// host:port) da bi sessionStorage/IndexedDB uopste mogli da prezive
+// navigaciju medju njima (server.py root-fix, videti README-ove). "Koren
+// sajta" NIJE nuzno koren porekla (window.location.origin): kad je sajt
+// hostovan pod pod-putanjom (npr. GitHub Pages projektna stranica,
+// https://user.github.io/eeg-tasks/...), sve tri stranice i dalje dele
+// zajednicko poreklo (isto sto treba za sessionStorage/IndexedDB), ali
+// apsolutna putanja mora da ukljuci i tu pod-putanju -- zato se ovde
+// koriste putanje RELATIVNE NA KOREN SAJTA, a siteBasePath() (ispod)
+// odredjuje taj koren u trenutku navigacije, iz trenutne URL putanje.
 const TASK_URLS = { S1: "/app/index.html", S2: "/s2-demo/app/index.html", S3: "/s3-demo/app/index.html" };
 const DEFAULT_TASK_ORDER = ["S1", "S2", "S3"];
+
+// Nalazi koren sajta iz trenutne putanje, trazeci poznati marker (svaka od
+// tri stranice zivi pod /app/, /s2-demo/app/ ili /s3-demo/app/ u odnosu na
+// taj koren). Bez pod-putanje (lokalni server.py, koren sajta == koren
+// porekla) vraca "". Ako marker nije pronadjen (nepoznata putanja), vraca
+// "" -- redirectToTask() se tada ponasa kao ranije (apsolutno od porekla).
+// VAZAN REDOSLED: /s2-demo/app/ i /s3-demo/app/ MORAJU se proveriti PRE
+// generickog /app/, jer obe sadrze "/app/" kao podnisku -- generican marker
+// bi se inace pogresno poklopio unutar njih (npr. "/s3-demo/app/..." bi
+// "/app/" prepoznao na indeksu 8, odsekavsi "/s3-demo" kao lazni koren).
+function siteBasePath() {
+  const path = window.location.pathname;
+  for (const marker of ["/s2-demo/app/", "/s3-demo/app/", "/app/"]) {
+    const idx = path.indexOf(marker);
+    if (idx >= 0) return path.slice(0, idx);
+  }
+  return "";
+}
 
 const SESSION_STORAGE_KEY = "eeg_session_state";
 const SESSION_DB_NAME = "eeg_sessions";
@@ -299,7 +324,7 @@ function applyEndScreenText(order, instructionsData, taskId, isPractice, session
 // unosi na PRVOJ stranici sesije (moze biti S1 ili S2), koja tada mora da
 // zna variant iako ga sama ne koristi, samo da bi ga prosledila dalje.
 function redirectToTask(taskId, n, variant, isDemo) {
-  const url = new URL(TASK_URLS[taskId], window.location.origin);
+  const url = new URL(siteBasePath() + TASK_URLS[taskId], window.location.origin);
   if (n != null) url.searchParams.set("n", n);
   if (variant != null) url.searchParams.set("variant", variant);
   if (isDemo) url.searchParams.set("demo", "1");
