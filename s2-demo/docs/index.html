@@ -1356,7 +1356,12 @@ function saveSessionState(state) {
   try { sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(state)); } catch (e) {
     // privatni rezim pregledaca i sl. -- sessionStorage moze biti nedostupan
   }
-  saveSessionStateToDb(state); // best-effort, ne cekamo (ne blokira tok)
+  // "DEMO" se namerno NIKAD ne upisuje u IndexedDB -- ta sifra je deljena
+  // izmedju svih demonstracija na ovom pregledacu (vidi objasnjenje u
+  // runSessionOrchestration), pa bi upis samo ostavio stanje koje bi
+  // sledeca, potpuno nepovezana demonstracija mogla da pokupi. sessionStorage
+  // iznad ostaje (potreban za lanac S1->S2->S3 UNUTAR iste kartice).
+  if (state.code !== "DEMO") saveSessionStateToDb(state); // best-effort, ne cekamo (ne blokira tok)
 }
 
 function loadSessionStateFromTab() {
@@ -1453,7 +1458,20 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
   const codeValidator = createCodeValidator(codesData);
   const { code, sessionNumber } = await runGlobalIntroScreen(null, codeValidator, { demoOnly: !!codesData.demo_only });
 
-  const recovered = await loadSessionStateFromDb(code);
+  // "DEMO" NIKAD ne oporavlja stanje preko IndexedDB. Ta sifra je deljena
+  // izmedju SVIH demonstracija na ovom pregledacu -- IndexedDB kljuc je
+  // doslovno "DEMO" (openSessionDb keyPath:"code"), ne nesto jedinstveno po
+  // posetiocu -- pa bi oporavak ovde preuzeo ostatak TUDJE/ranije
+  // demonstracije (npr. vec zavrseni S1+S2 iz prethodne posete) i, vec pri
+  // prvom otvaranju stranice, preskocio pravo na S3 (prijavljen bug:
+  // "sesija pocinje trecim zadatkom"). Svaka poseta DEMO sifri je zato UVEK
+  // nova sesija. Redosled za nju je iz istog razloga UVEK DEFAULT_TASK_ORDER
+  // (bez kontrabalansiranja) -- taskOrderForCode() bi svakako vratio isto,
+  // jer generate_participant_codes.py nikad ne dodeljuje redosled sifri
+  // "DEMO" (RESERVED skup), ali je ovde eksplicitno da to ne zavisi od te
+  // pretpostavke iz drugog fajla.
+  const isDemoCode = code === "DEMO";
+  const recovered = isDemoCode ? null : await loadSessionStateFromDb(code);
   if (recovered && recovered.completed.length < recovered.order.length) {
     session = recovered;
   } else {
@@ -1463,13 +1481,14 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
     // ponovnim citanjem URL-a svake stranice.
     const startedAt = Date.now();
     session = {
-      code, sessionNumber, order: taskOrderForCode(codesData, code),
+      code, sessionNumber,
+      order: isDemoCode ? DEFAULT_TASK_ORDER : taskOrderForCode(codesData, code),
       // sifra "DEMO" je UVEK demo (isto pravilo kao van orkestracije,
       // core/params.js resolveParamsCore embedded rezim) -- ne samo kad
       // ?demo=1 stoji eksplicitno u URL-u (Demonstracija dugme na GitHub
       // Pages ga nikad ne postavlja), inace DEMO_ITEM_CAP skracenje
       // (scenario main()) nikad ne bi bilo primenjeno za nju.
-      n: requestedN, variant: requestedVariant, isDemo: requestedDemo || code === "DEMO",
+      n: requestedN, variant: requestedVariant, isDemo: requestedDemo || isDemoCode,
       completed: [], startedAt, sessionId: makeSessionId(code, startedAt),
     };
   }
