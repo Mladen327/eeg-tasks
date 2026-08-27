@@ -28,10 +28,12 @@
       "name": "Provera ugovora",
       "lines": [
         "Videćete nacrt ugovora i referentni zapis pored njega.",
+        "Dok pamtite podatke, tasterom F2 ili dugmetom „Spreman” možete preći dalje čim ste spremni.",
         "Za svako obeleženo polje proverite da li vrednost u ugovoru odgovara referentnom zapisu.",
         "Ako se pojavi predlog sistema, prvo odlučite da li ga prihvatate ili odbijate.",
         "Zatim kliknite na tačnu vrednost među ponuđenim opcijama.",
-        "Referentni zapis možete ponovo pogledati dugmetom na ekranu, jednom po stavci.",
+        "Referentni zapis možete ponovo pogledati tasterom F2 ili dugmetom na ekranu, jednom po stavci.",
+        "Taster F2 u oba dela zadatka upravlja time da li vidite referentni zapis.",
         "Kopiranje i lepljenje teksta nisu mogući."
       ]
     }

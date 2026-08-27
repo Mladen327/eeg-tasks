@@ -266,6 +266,11 @@ button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
   font-size: 13px;
 }
 
+#btn-encoding-ready {
+  display: block;
+  margin: 12px auto 0 auto;
+}
+
 #btn-peek { width: 100%; margin-bottom: 12px; }
 
 /* Fiksna visina bez obzira na duzinu teksta (sekcija 8). */
