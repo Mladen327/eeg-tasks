@@ -1425,7 +1425,12 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
     const startedAt = Date.now();
     session = {
       code, sessionNumber, order: taskOrderForCode(codesData, code),
-      n: requestedN, variant: requestedVariant, isDemo: requestedDemo,
+      // sifra "DEMO" je UVEK demo (isto pravilo kao van orkestracije,
+      // core/params.js resolveParamsCore embedded rezim) -- ne samo kad
+      // ?demo=1 stoji eksplicitno u URL-u (Demonstracija dugme na GitHub
+      // Pages ga nikad ne postavlja), inace DEMO_ITEM_CAP skracenje
+      // (scenario main()) nikad ne bi bilo primenjeno za nju.
+      n: requestedN, variant: requestedVariant, isDemo: requestedDemo || code === "DEMO",
       completed: [], startedAt, sessionId: makeSessionId(code, startedAt),
     };
   }
@@ -1613,6 +1618,7 @@ async function main() {
     order = session.order;
     params.participant = session.code;
     params.n = session.n;
+    params.demo = session.isDemo;
   } else if (!isPracticeParam) {
     // Pojedinacan zadatak (pilot/debag preko eksplicitnog URL parametra,
     // ili ugradjeni/demo rezim) -- isti tok kao pre integracije sesije.

@@ -359,6 +359,13 @@ async function main() {
     order = session.order;
     params.participant = session.code;
     params.n = session.n;
+    params.demo = session.isDemo;
+    // variant je S3-specifican (extraKeys) -- van orkestracije dolazi
+    // direktno iz URL-a (parseParamsCore), ovde mora da se prenese iz
+    // sesijskog stanja isto kao participant/n/demo, inace resolveParamsCore
+    // (serverExtra) nikad ne bi video vrednost koju je prva stranica sesije
+    // pokupila iz URL-a i sacuvala u session.variant.
+    params.variant = session.variant;
   } else if (!isPracticeParam) {
     // Pojedinacan zadatak (pilot/debag preko eksplicitnog URL parametra,
     // ili ugradjeni/demo rezim) -- isti tok kao pre integracije sesije.
