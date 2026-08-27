@@ -19,10 +19,12 @@ python generate_stimuli.py --scenario S1 --seed 20260825 --participants 40
 python server.py                                                # http :8000, ws :8767
 ```
 
-Otvoriti u pregledaču, na primer:
+Otvoriti u pregledaču, na primer (`<SIFRA>` je jedna od stvarnih šifri iz
+`data/participant_codes.json`, generisanih preko `generate_participant_codes.py`
+-- ne postoji fiksan format tipa "P07"):
 
 ```
-http://localhost:8000/app/index.html?participant=P07&n=5
+http://localhost:8000/app/index.html?participant=<SIFRA>&n=5
 http://localhost:8000/app/index.html?participant=DEMO&n=5&demo=1
 http://localhost:8000/app/index.html?practice=1
 ```

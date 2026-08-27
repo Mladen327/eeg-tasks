@@ -11,7 +11,7 @@ iz sekcije 3.3 -- to je iskljucivo prikaz u app/task.js).
 
 Upotreba:
     python dump_item_s2.py --participant DEMO --items 1 2
-    python dump_item_s2.py --participant P07 --n 7 --items 5 12 30
+    python dump_item_s2.py --participant <SIFRA> --n 7 --items 5 12 30
     python dump_item_s2.py --participant DEMO --n 5 --random 20 --seed 1
 """
 
@@ -49,7 +49,7 @@ def format_table(rows: list[list[str]]) -> str:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--participant", required=True, help='npr. "DEMO", "P07"')
+    ap.add_argument("--participant", required=True, help='npr. "DEMO", ili stvarna sifra iz participant_codes.json')
     ap.add_argument("--n", type=int, choices=[3, 5, 7], default=5)
     ap.add_argument("--items", type=int, nargs="+", help="redni brojevi stavki u bloku, 1-zasnovano")
     ap.add_argument("--random", type=int, help="umesto --items, izaberi ovoliko nasumicnih stavki")

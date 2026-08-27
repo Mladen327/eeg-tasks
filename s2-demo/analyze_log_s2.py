@@ -6,7 +6,7 @@ sumarne statistike. Za razliku od Scenarija 3, tacnost se NE nalazi u logu
 
 Upotreba:
     python analyze_log_s2.py logs/*.jsonl
-    python analyze_log_s2.py logs/P07_S2_5_20260826T101403Z.jsonl
+    python analyze_log_s2.py logs/<SIFRA>_S2_5_20260826T101403Z.jsonl
 """
 
 from __future__ import annotations

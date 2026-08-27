@@ -16,7 +16,7 @@ s3-demo/analyze_log.py ranije ispisivale.
 Upotreba:
     python analyze_log.py s2-demo/logs/*.jsonl
     python analyze_log.py s3-demo/logs/*.jsonl --detail
-    python analyze_log.py s3-demo/logs/P07_S3b_5_20260825T101403Z.jsonl
+    python analyze_log.py s3-demo/logs/<SIFRA>_S3b_5_20260825T101403Z.jsonl
     python analyze_log.py --session 2CRD_20260827T143806Z
 
 --session ucitava celu sesiju (integracija sesije, tacka 4/5 odobrenja):

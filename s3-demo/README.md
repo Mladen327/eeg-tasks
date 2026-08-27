@@ -19,10 +19,12 @@ s3-demo/ sam -- `app/index.html` ucitava deljeni `core/` i `data/` preko
 `"../../"`, pa URL uvek nosi `/s3-demo/` prefiks (ranije je nedostajao,
 davao je 404 na core/*.js -- ispravljeno).
 
-Otvoriti u pregledaču, na primer:
+Otvoriti u pregledaču, na primer (`<SIFRA>` je jedna od stvarnih šifri iz
+`data/participant_codes.json`, generisanih preko `generate_participant_codes.py`
+-- ne postoji fiksan format tipa "P07"):
 
 ```
-http://localhost:8000/s3-demo/app/index.html?participant=P07&variant=S3b&n=5
+http://localhost:8000/s3-demo/app/index.html?participant=<SIFRA>&variant=S3b&n=5
 http://localhost:8000/s3-demo/app/index.html?participant=DEMO&variant=S3b&n=5&demo=1
 http://localhost:8000/s3-demo/app/index.html?practice=1
 ```

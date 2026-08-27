@@ -21,7 +21,7 @@ iz prikaza u app/task.js).
 Upotreba:
     python dump_item.py --scenario S2 --participant DEMO --items 1 2
     python dump_item.py --scenario S2 --participant DEMO --n 5 --random 20 --seed 1
-    python dump_item.py --scenario S3 --participant P07 --variant S3a --n 3 --items 5 12 30
+    python dump_item.py --scenario S3 --participant <SIFRA> --variant S3a --n 3 --items 5 12 30
     python dump_item.py --scenario S1 --participant DEMO --n 7 --items 1 2
 """
 
@@ -224,7 +224,7 @@ def run_s1(args):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--scenario", choices=["S1", "S2", "S3"], required=True)
-    ap.add_argument("--participant", required=True, help='npr. "DEMO", "P07"')
+    ap.add_argument("--participant", required=True, help='npr. "DEMO", ili stvarna sifra iz participant_codes.json')
     ap.add_argument("--variant", choices=["S3a", "S3b"], default="S3b", help="samo za --scenario S3")
     ap.add_argument("--n", type=int, choices=[3, 5, 7], default=5)
     ap.add_argument("--items", type=int, nargs="+", help="redni brojevi stavki u bloku, 1-zasnovano")
