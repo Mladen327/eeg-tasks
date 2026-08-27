@@ -272,6 +272,7 @@ async function main() {
     order = session.order;
     params.participant = session.code;
     params.n = session.n;
+    params.demo = session.isDemo;
   } else if (!isPracticeParam) {
     // Pojedinacan zadatak (pilot/debag preko eksplicitnog URL parametra,
     // ili ugradjeni/demo rezim) -- isti tok kao pre integracije sesije.
