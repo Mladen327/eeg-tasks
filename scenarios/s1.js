@@ -143,13 +143,7 @@ async function main() {
     await runSessionOverviewScreen(instructionsData);
   }
 
-  const resolved = resolveParamsCore(params, embedded, EMBEDDED_DEFAULTS, {
-    fatalMessage: "Nedostaju ili su neispravni URL parametri. Ocekivano: ?participant=P07&n=5",
-  });
-  if (resolved.fatal) {
-    showFatal(resolved.fatal);
-    return;
-  }
+  const resolved = resolveParamsCore(params, embedded, EMBEDDED_DEFAULTS, {});
   const isPractice = resolved.isPractice, participantId = resolved.participantId, isDemo = resolved.isDemo;
   let n = resolved.n;
 
