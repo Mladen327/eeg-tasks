@@ -63,7 +63,8 @@ def main():
     items_path = args.data / "items_S2.json"
     items_data = load_json(items_path)
     if items_data is None:
-        raise SystemExit(f"ne postoji {items_path} -- pokreni prvo generate_stimuli_s2.py")
+        raise SystemExit(f"ne postoji {items_path} -- pokreni prvo (iz korena repozitorijuma) "
+                         f"python generate_stimuli.py --scenario S2")
 
     try:
         block = items_data["participants"][args.participant][str(args.n)]

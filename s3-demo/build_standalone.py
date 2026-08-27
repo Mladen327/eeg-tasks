@@ -6,7 +6,8 @@ politikom pregledaca).
 Ulaz: app/index.html, app/style.css, app/task.js,
       data/contract_template.html, data/items_S3a.json,
       data/items_S3b.json, data/suggestions.json, data/companies.json
-      (svi moraju vec postojati -- pokrenuti prvo generate_stimuli.py).
+      (svi moraju vec postojati -- pokrenuti prvo, iz korena repozitorijuma,
+      python generate_stimuli.py --scenario S3).
 
 Izlaz: standalone/index.html
 

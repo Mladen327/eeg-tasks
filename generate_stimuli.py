@@ -621,7 +621,8 @@ def run_s3(args):
         encoding="utf-8",
     )
 
-    # "DEMO" je dodatni, uvek prisutan ucesnik (pored P01..PNN) -- URL rezim
+    # "DEMO" je dodatni, uvek prisutan ucesnik (pored stvarnih sifri iz
+    # participant_codes.json, ucitanih ispod) -- URL rezim
     # ?participant=DEMO&demo=1 i podrazumevane vrednosti u samostalnoj
     # verziji oslanjaju se na njega.
     participant_ids = ["DEMO"] + load_participant_codes(args.participants)
