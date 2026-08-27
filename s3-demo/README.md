@@ -84,7 +84,7 @@ izbornik (varijanta S3a/S3b, N 3/5/7) — mentor može da proba obe
 varijante klikom, bez izmene adrese; ako se selektor ne dira, koristi se
 vrednost iz URL-a/podrazumevana vrednost. `demo` sam po sebi nema kontrolu
 u izborniku (ostaje ono sto je URL/podrazumevano dao — podrazumevano
-`demo=1`, tj. 4 stavke).
+`demo=1`, tj. 3 stavke).
 
 Ovo pravilo vazi samo kad su podaci ugradjeni (`window.__S3_EMBEDDED__`)
 — isti `app/task.js` na serveru i dalje trazi pune parametre, jer je tamo

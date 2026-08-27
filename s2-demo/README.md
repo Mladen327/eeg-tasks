@@ -364,7 +364,7 @@ python analyze_log_s2.py --detail logs/*.jsonl
   numeričku vrednost (sekcija 7: rok se izvodi iz raspodele
   `first_keystroke_ms` tek posle pilota) -- kad se odredi, dodati konstantu
   `CELL_DEADLINE_MS` i granu u `runEntryPhase()`.
-- `DEMO_ITEM_CAP` (broj stavki u `&demo=1` režimu, podrazumevano 4) --
+- `DEMO_ITEM_CAP` (broj stavki u `&demo=1` režimu, podrazumevano 3) --
   imati na umu da je po stavci znatno duže nego u s3-demo-u (npr. N=7 samo
   faza kodiranja traje do 39s ako se ne završi ranije dugmetom "Spreman"),
   pa ceo demo blok na N=7 može trajati više minuta.
