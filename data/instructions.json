@@ -1,0 +1,39 @@
+{
+  "session_summary": "Sesija ima tri kratka zadatka, jedan za drugim, sa pauzom između njih. Svaki traje nekoliko minuta.",
+  "tasks": [
+    {
+      "id": "S1",
+      "name": "Prekucavanje",
+      "lines": [
+        "Videćete nekoliko rečenica iz poslovne prepiske, jednu ispod druge.",
+        "Zapamtite ih, a zatim ih otkucajte iz sećanja, redom, u polja koja se pojave.",
+        "Tasterom F2 ili dugmetom na ekranu možete ponovo da pogledate rečenice dok kucate, koliko god puta vam treba.",
+        "Kad popunite sva polja, potvrdite dugmetom „Potvrdi unos”.",
+        "Kopiranje i lepljenje teksta nisu mogući."
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "Unos podataka",
+      "lines": [
+        "Videćete dokument sa podacima o firmi, i praznu tabelu pored njega.",
+        "Zapamtite podatke, a zatim ih unesite u tabelu iz sećanja.",
+        "Tasterom F2 ili dugmetom možete se vratiti na dokument i ponovo pogledati podatke, koliko god puta vam treba.",
+        "Kad popunite sva polja, potvrdite dugmetom „Potvrdi unos”.",
+        "Kopiranje i lepljenje teksta nisu mogući."
+      ]
+    },
+    {
+      "id": "S3",
+      "name": "Provera ugovora",
+      "lines": [
+        "Videćete nacrt ugovora i referentni zapis pored njega.",
+        "Za svako obeleženo polje proverite da li vrednost u ugovoru odgovara referentnom zapisu.",
+        "Ako se pojavi predlog sistema, prvo odlučite da li ga prihvatate ili odbijate.",
+        "Zatim kliknite na tačnu vrednost među ponuđenim opcijama.",
+        "Referentni zapis možete ponovo pogledati dugmetom na ekranu, jednom po stavci.",
+        "Kopiranje i lepljenje teksta nisu mogući."
+      ]
+    }
+  ]
+}

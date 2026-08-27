@@ -1,0 +1,108 @@
+<!--
+  Sablon nacrta ugovora. Mesta za popunjavanje su oznacena sa {{field_name}}
+  i ubacena su u <span data-field="field_name"> tako da task.js moze da
+  pronadje i istakne aktivno polje u fazi verifikacije. Popunjava se
+  isključivo tekstualnom zamenom u task.js (renderContract) — ovo nije
+  Jinja/Handlebars sablon, samo {{...}} markeri.
+
+  Operater je isti u svim ugovorima i fiktivan (Interlink Telekom d.o.o.).
+-->
+<div class="contract" id="contract-root">
+  <header class="contract-header">
+    <div class="operator-name">INTERLINK TELEKOM d.o.o.</div>
+    <div class="operator-address">
+      Bulevar Zorana Đinđića 105, Beograd &middot; PIB 104778213 &middot; Matični broj 20447719
+    </div>
+    <h1>UGOVOR O PRUŽANJU TELEKOMUNIKACIONIH USLUGA</h1>
+    <div class="contract-number-line">
+      Broj ugovora: <span data-field="contract_number" class="field">{{contract_number}}</span>
+    </div>
+  </header>
+
+  <section class="contract-section">
+    <h2>1. Ugovorne strane</h2>
+    <table class="parties">
+      <tr>
+        <td class="party-label">Pružalac usluge:</td>
+        <td>
+          Interlink Telekom d.o.o., Bulevar Zorana Đinđića 105, Beograd,
+          PIB 104778213, matični broj 20447719
+        </td>
+      </tr>
+      <tr>
+        <td class="party-label">Korisnik usluge:</td>
+        <td>
+          <span data-field="company_name" class="field">{{company_name}}</span>,
+          <span data-field="street" class="field">{{street}}</span>
+          <span data-field="street_number" class="field">{{street_number}}</span>,
+          <span data-field="city" class="field">{{city}}</span>,
+          PIB <span data-field="pib" class="field">{{pib}}</span>,
+          matični broj <span data-field="registration_number" class="field">{{registration_number}}</span>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="contract-section">
+    <h2>2. Predmet ugovora</h2>
+    <p>
+      Predmet ovog ugovora je zakup paketa mobilne telefonije za zaposlene
+      korisnika usluge, u skladu sa komercijalnim uslovima iz člana 3.
+      Broj paketa se određuje prema broju zaposlenih korisnika usluge, koji
+      na dan zaključenja ugovora iznosi
+      <span data-field="employee_count" class="field context">{{employee_count}}</span>.
+    </p>
+  </section>
+
+  <section class="contract-section">
+    <h2>3. Komercijalni uslovi</h2>
+    <table class="terms">
+      <tr>
+        <td>Broj paketa</td>
+        <td><span data-field="package_count" class="field context">{{package_count}}</span></td>
+      </tr>
+      <tr>
+        <td>Mesečna naknada po paketu</td>
+        <td><span data-field="monthly_fee_per_package" class="field">{{monthly_fee_per_package}}</span></td>
+      </tr>
+      <tr>
+        <td>Ukupna mesečna naknada</td>
+        <td><span data-field="total_monthly_fee" class="field context">{{total_monthly_fee}}</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="contract-section">
+    <h2>4. Trajanje ugovora</h2>
+    <p>
+      Ugovor se zaključuje na period od
+      <span data-field="contract_months" class="field context">{{contract_months}}</span>
+      meseci, počev od
+      <span data-field="start_date" class="field context">{{start_date}}</span>.
+    </p>
+  </section>
+
+  <section class="contract-section">
+    <h2>5. Kontakt osoba korisnika usluge</h2>
+    <table class="terms">
+      <tr>
+        <td>Ime i prezime</td>
+        <td><span data-field="contact_person" class="field">{{contact_person}}</span></td>
+      </tr>
+      <tr>
+        <td>Telefon</td>
+        <td><span data-field="contact_phone" class="field context">{{contact_phone}}</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="contract-section signatures">
+    <h2>6. Potpisi ugovornih strana</h2>
+    <table class="signature-block">
+      <tr>
+        <td>Za pružaoca usluge:<br><span class="signature-line">Interlink Telekom d.o.o.</span></td>
+        <td>Za korisnika usluge:<br><span class="signature-line">{{company_name}}</span></td>
+      </tr>
+    </table>
+  </section>
+</div>

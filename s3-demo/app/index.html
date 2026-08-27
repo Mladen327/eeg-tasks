@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<title>Provera ugovora — Scenario 3</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="screen-loading" class="screen">
+    <p>Učitavanje...</p>
+  </div>
+
+  <!-- Ekrani 1/2/3 su zajednicki za S1/S2/S3 (core/intro.js) -- markap se
+       ponavlja identicno u sva tri projekta (id-jevi moraju biti isti). -->
+  <div id="screen-global-intro" class="screen hidden">
+    <div class="intro-box">
+      <h1 id="global-intro-title"></h1>
+      <label class="intro-field-label">
+        Šifra ispitanika
+        <input id="global-intro-input" type="text" autocomplete="off">
+      </label>
+      <p id="global-intro-display" class="intro-known-value hidden"></p>
+      <button id="btn-global-intro-next">Dalje</button>
+    </div>
+  </div>
+
+  <div id="screen-session-overview" class="screen hidden">
+    <div class="intro-box">
+      <h1>Tok sesije</h1>
+      <ul id="session-overview-list" class="task-list"></ul>
+      <p id="session-overview-summary"></p>
+      <button id="btn-session-overview-next">Dalje</button>
+    </div>
+  </div>
+
+  <div id="screen-instructions" class="screen hidden">
+    <div class="intro-box">
+      <p id="instructions-position" class="task-position"></p>
+      <h1 id="instructions-title"></h1>
+      <ul id="instructions-lines"></ul>
+      <p id="intro-suggestion-note" class="hidden">
+        Za svako polje prvo ćete videti predlog automatskog sistema. Predlog
+        može biti tačan ili netačan — konačnu odluku uvek donosite vi.
+      </p>
+
+      <div id="instructions-selectors" class="intro-selectors hidden">
+        <label>
+          Varijanta
+          <select id="select-variant">
+            <option value="S3a">S3a — bez asistencije</option>
+            <option value="S3b">S3b — sa sugestijama modela</option>
+          </select>
+        </label>
+        <label>
+          Broj obeleženih polja (N)
+          <select id="select-n">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="btn-start">Počni</button>
+    </div>
+  </div>
+
+  <div id="screen-task" class="screen hidden">
+    <header class="task-header">
+      <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+      <div class="counters">
+        <span id="counter-item">Stavka —</span>
+        <span id="counter-field">Polje —</span>
+      </div>
+    </header>
+
+    <main class="task-main">
+      <section class="col col-contract">
+        <h2>Nacrt ugovora</h2>
+        <div id="contract-mount"></div>
+      </section>
+
+      <section class="col col-right">
+        <div id="encoding-block">
+          <h2>Referentni zapis</h2>
+          <div id="reference-mount" class="reference-panel"></div>
+          <div id="encoding-countdown" class="countdown hidden"></div>
+        </div>
+
+        <div id="verification-block" class="hidden">
+          <button id="btn-peek" class="hidden">Prikaži referentni zapis (jednom po stavci)</button>
+          <div id="peek-mount" class="reference-panel"></div>
+
+          <div id="suggestion-panel" class="suggestion-panel hidden">
+            <div id="suggestion-loading" class="suggestion-loading hidden">Učitavanje predloga...</div>
+            <div id="suggestion-text" class="suggestion-text hidden"></div>
+            <div id="suggestion-buttons" class="suggestion-buttons hidden">
+              <button id="btn-accept" data-accepted="true">Prihvati</button>
+              <button id="btn-reject" data-accepted="false">Odbij</button>
+            </div>
+          </div>
+
+          <div id="options-panel" class="options-panel hidden">
+            <p class="options-prompt">Koja vrednost je tačna?</p>
+            <div id="options-list" class="options-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="screen-gap" class="screen hidden"></div>
+
+  <div id="screen-end" class="screen hidden">
+    <div class="intro-box">
+      <h1 id="screen-end-title">Kraj bloka</h1>
+      <p id="screen-end-message">Hvala. Blok je završen.</p>
+      <p id="download-note" class="hidden">Log datoteka je preuzeta u Downloads folder.</p>
+    </div>
+  </div>
+
+  <script src="../../core/clock.js"></script>
+  <script src="../../core/logger.js"></script>
+  <script src="../../core/block.js"></script>
+  <script src="../../core/screen.js"></script>
+  <script src="../../core/guard.js"></script>
+  <script src="../../core/params.js"></script>
+  <script src="../../core/intro.js"></script>
+  <script src="task.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* Scenario 1 demonstrator — namerno bez animacija i bez promena velicine
+   elemenata. Ista svetlina pozadine u svim stanjima/fazama/blokovima
+   (zenica reaguje na svetlo), SPEC_S1_demo.md sekcija 7. Paleta preuzeta
+   iz s2-demo/app/style.css i s3-demo/app/style.css radi konzistentnosti
+   izmedju sva tri demonstratora. */
+
+:root {
+  --bg: #e9e9e4;
+  --panel-bg: #f4f4f0;
+  --border: #b9b9b0;
+  --text: #1c1c1a;
+  --muted: #5a5a54;
+  --active-bg: #d7d29a;
+  --accent: #3a4a6b;
+  --accent-text: #f4f4f0;
+  --danger: #7a3b3b;
+  --font: "Segoe UI", Arial, sans-serif;
+  --mono: "Consolas", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+}
+
+.hidden { display: none !important; }
+
+button {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { background: var(--active-bg); }
+button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
+
+.screen {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-box {
+  max-width: 640px;
+  margin-top: 10vh;
+  padding: 32px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+.intro-box h1 { margin-top: 0; }
+.intro-box button { margin-top: 16px; }
+
+/* ---- ekrani 1/2/3, zajednicki za S1/S2/S3 (core/intro.js) ---- */
+
+.intro-field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.intro-field-label input {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 7px 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+}
+.intro-known-value {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 16px;
+}
+
+.task-list {
+  margin: 8px 0 16px 0;
+  padding-left: 22px;
+}
+.task-list li { margin-bottom: 6px; }
+
+.task-position {
+  margin: 0 0 4px 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+#instructions-lines {
+  margin: 0 0 8px 0;
+  padding-left: 22px;
+}
+#instructions-lines li { margin-bottom: 10px; line-height: 1.4; }
+
+.intro-selectors {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.intro-selectors label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.intro-selectors select {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 4px 6px;
+  color: var(--text);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+
+/* ---- zaglavlje zadatka ---- */
+
+.task-header {
+  width: 100%;
+  max-width: 800px;
+  padding: 12px 16px 0 16px;
+}
+.progress-track {
+  height: 6px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+}
+.counters {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---- pozornica: fiksna velicina. Faza kodiranja i faza unosa dele ISTI
+   fizicki region ekrana (samo jedna vidljiva u datom trenutku), tako da
+   se raspored ne pomera pri prelasku medju njima (SPEC_S1_demo.md
+   sekcija 7) i da ROI iz sesijskog zaglavlja ostane tacan. ---- */
+
+#stage {
+  width: 760px;
+  min-height: 620px;
+  max-width: calc(100vw - 32px);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  position: relative;
+  overflow: auto;
+  /* core/guard.js instalira presretanje copy/cut/contextmenu/dragstart nad
+     ovim elementom -- ovo je CSS polovina iste zastite (spreci VIZUELNO
+     obelezavanje teksta prevlacenjem), isti obrazac kao S2-ov
+     #window-document. */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sentence-list, .entry-list {
+  margin: 0;
+  padding-left: 28px;
+}
+.sentence-list li, .entry-list li {
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.entry-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.entry-list input {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 15px;
+  padding: 7px 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+}
+.entry-list input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(58, 74, 107, 0.25);
+}
+
+.encoding-countdown {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+#btn-encoding-ready {
+  display: block;
+  margin: 12px auto 0 auto;
+}
+
+.entry-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Ponovni uvid: rečenice se UBACUJU u DOM preko #peek-overlay (ne
+   sakrivaju CSS-om drugo -- vidi scenarios/s1.js), overlay prekriva CEO
+   #stage istom pozadinom (bez zatamnjenja), da svetlina ostane
+   nepromenjena (sekcija 7). */
+.peek-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--panel-bg);
+  padding: 24px 28px;
+  overflow: auto;
+}
+.peek-label {
+  margin: 0 0 14px 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+#btn-peek-close {
+  display: block;
+  margin: 16px auto 0 auto;
+}
+
+/* ---- kraj stavke / kraj bloka ---- */
+
+#screen-gap { background: var(--bg); }

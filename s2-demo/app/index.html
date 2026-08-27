@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<title>Prenošenje podataka — Scenario 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="screen-loading" class="screen">
+    <p>Učitavanje...</p>
+  </div>
+
+  <!-- Ekrani 1/2/3 su zajednicki za S1/S2/S3 (core/intro.js) -- markap se
+       ponavlja identicno u sva tri projekta (id-jevi moraju biti isti). -->
+  <div id="screen-global-intro" class="screen hidden">
+    <div class="intro-box">
+      <h1 id="global-intro-title"></h1>
+      <label class="intro-field-label">
+        Šifra ispitanika
+        <input id="global-intro-input" type="text" autocomplete="off">
+      </label>
+      <p id="global-intro-display" class="intro-known-value hidden"></p>
+      <button id="btn-global-intro-next">Dalje</button>
+    </div>
+  </div>
+
+  <div id="screen-session-overview" class="screen hidden">
+    <div class="intro-box">
+      <h1>Tok sesije</h1>
+      <ul id="session-overview-list" class="task-list"></ul>
+      <p id="session-overview-summary"></p>
+      <button id="btn-session-overview-next">Dalje</button>
+    </div>
+  </div>
+
+  <div id="screen-instructions" class="screen hidden">
+    <div class="intro-box">
+      <p id="instructions-position" class="task-position"></p>
+      <h1 id="instructions-title"></h1>
+      <ul id="instructions-lines"></ul>
+
+      <div id="instructions-selectors" class="intro-selectors hidden">
+        <label>
+          Broj obeleženih polja (N)
+          <select id="select-n">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="btn-start">Počni</button>
+    </div>
+  </div>
+
+  <div id="screen-task" class="screen hidden">
+    <header class="task-header">
+      <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+      <div class="counters">
+        <span id="counter-item">Stavka —</span>
+        <span id="counter-cell">Polje —</span>
+      </div>
+      <div id="window-indicator" class="window-indicator"></div>
+    </header>
+
+    <main>
+      <div id="stage">
+        <div id="window-document" class="window-pane hidden">
+          <div id="document-mount"></div>
+          <div id="encoding-countdown" class="encoding-countdown hidden"></div>
+          <button id="btn-encoding-ready" class="hidden" disabled>Spreman (F2)</button>
+          <button id="btn-switch-to-sheet" class="hidden">Nazad na tabelu (F2)</button>
+        </div>
+
+        <div id="window-spreadsheet" class="window-pane hidden">
+          <table id="sheet-table">
+            <thead><tr id="sheet-header-row"></tr></thead>
+            <tbody><tr id="sheet-input-row"></tr></tbody>
+          </table>
+          <div class="sheet-actions">
+            <button id="btn-switch-to-doc">Pogledaj dokument (F2)</button>
+            <button id="btn-submit-item" disabled>Potvrdi unos</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="screen-gap" class="screen hidden"></div>
+
+  <div id="screen-end" class="screen hidden">
+    <div class="intro-box">
+      <h1 id="screen-end-title">Kraj bloka</h1>
+      <p id="screen-end-message">Hvala. Blok je završen.</p>
+      <p id="download-note" class="hidden">Log datoteka je preuzeta u Downloads folder.</p>
+    </div>
+  </div>
+
+  <script src="../../core/clock.js"></script>
+  <script src="../../core/logger.js"></script>
+  <script src="../../core/block.js"></script>
+  <script src="../../core/screen.js"></script>
+  <script src="../../core/guard.js"></script>
+  <script src="../../core/params.js"></script>
+  <script src="../../core/intro.js"></script>
+  <script src="task.js"></script>
+</body>
+</html>

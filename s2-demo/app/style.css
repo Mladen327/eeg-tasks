@@ -1,0 +1,298 @@
+/* Scenario 2 demonstrator — namerno bez animacija i bez promena velicine
+   elemenata. Ista svetlina pozadine u svim stanjima/prozorima/blokovima
+   (zenica reaguje na svetlo), sekcija 9 uputstva. Paleta preuzeta iz
+   s3-demo/app/style.css radi konzistentnosti izmedju dva demonstratora. */
+
+:root {
+  --bg: #e9e9e4;
+  --panel-bg: #f4f4f0;
+  --border: #b9b9b0;
+  --text: #1c1c1a;
+  --muted: #5a5a54;
+  --active-bg: #d7d29a;
+  --accent: #3a4a6b;
+  --accent-text: #f4f4f0;
+  --danger: #7a3b3b;
+  --font: "Segoe UI", Arial, sans-serif;
+  --mono: "Consolas", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+}
+
+.hidden { display: none !important; }
+
+button {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { background: var(--active-bg); }
+button:disabled { opacity: 0.4; cursor: default; background: var(--panel-bg); }
+
+.screen {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-box {
+  max-width: 640px;
+  margin-top: 10vh;
+  padding: 32px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+.intro-box h1 { margin-top: 0; }
+.intro-box button { margin-top: 16px; }
+
+/* ---- ekrani 1/2/3, zajednicki za S1/S2/S3 (core/intro.js) ---- */
+
+.intro-field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.intro-field-label input {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 7px 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+}
+.intro-known-value {
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 16px;
+}
+
+.task-list {
+  margin: 8px 0 16px 0;
+  padding-left: 22px;
+}
+.task-list li { margin-bottom: 6px; }
+
+.task-position {
+  margin: 0 0 4px 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+#instructions-lines {
+  margin: 0 0 8px 0;
+  padding-left: 22px;
+}
+#instructions-lines li { margin-bottom: 10px; line-height: 1.4; }
+
+.intro-selectors {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.intro-selectors label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.intro-selectors select {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 4px 6px;
+  color: var(--text);
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+
+/* ---- zaglavlje zadatka ---- */
+
+.task-header {
+  width: 100%;
+  max-width: 800px;
+  padding: 12px 16px 0 16px;
+}
+.progress-track {
+  height: 6px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+}
+.counters {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.window-indicator {
+  text-align: center;
+  padding: 4px 2px 10px 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.window-indicator .switch-hint {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---- pozornica: fiksna velicina, oba prozora je popunjavaju u istom
+   fizickom regionu ekrana (samo jedan vidljiv u datom trenutku). Fiksna
+   velicina bira se OVDE, ne iz sadrzaja, tako da ROI iz sesijskog
+   zaglavlja ostaje tacan bez ijednog "priming" renderovanja (sekcija 9). ---- */
+
+#stage {
+  width: 760px;
+  height: 620px;
+  max-width: calc(100vw - 32px);
+  background: var(--bg);
+  position: relative;
+}
+
+.window-pane {
+  width: 100%;
+  height: 100%;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  overflow: auto;
+}
+
+/* ---- Prozor A: dokument ---- */
+
+#window-document {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.document-header { text-align: center; margin-bottom: 20px; }
+.document-agency {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.document-header h1 { font-size: 19px; margin: 8px 0 0 0; }
+
+.document-fields {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 10px;
+  column-gap: 12px;
+}
+.document-fields dt {
+  color: var(--muted);
+  font-size: 13px;
+  padding-top: 2px;
+}
+.document-fields dd {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Polje se istice ISKLJUCIVO promenom pozadine, nikad velicinom (sekcija 9). */
+.field {
+  padding: 2px 5px;
+}
+.field.active {
+  background: var(--active-bg);
+}
+
+.encoding-countdown {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+#btn-encoding-ready {
+  display: block;
+  margin: 12px auto 0 auto;
+}
+
+#btn-switch-to-sheet {
+  display: block;
+  margin: 20px auto 0 auto;
+}
+
+/* ---- Prozor B: tabela za unos ---- */
+
+#window-spreadsheet table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+#window-spreadsheet th,
+#window-spreadsheet td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 13px;
+}
+#window-spreadsheet th {
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+#window-spreadsheet td input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 15px;
+  padding: 6px 6px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+}
+#window-spreadsheet td input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(58, 74, 107, 0.25);
+}
+
+.sheet-actions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Prazan ekran tokom prebacivanja (trosak, sekcija 4.3): oba .window-pane
+   dobijaju .hidden (isti mehanizam kao svuda drugde), #stage ostaje istog
+   fiksnog oblika i iste boje pozadine (var(--bg)) -- nema skoka svetline. */
+
+/* ---- kraj stavke / kraj bloka ---- */
+
+#screen-gap { background: var(--bg); }

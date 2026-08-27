@@ -1,0 +1,43 @@
+<!--
+  Sablon dokumenta u Prozoru A (sekcija 4.1, 9). Mesta za popunjavanje su
+  oznacena sa {{field_name}} i ubacena su u <span data-field="field_name">
+  tako da task.js moze da pronadje i istakne obelezena polja (i u fazi
+  kodiranja, i pri svakom povratku u Prozor A). Popunjava se iskljucivo
+  tekstualnom zamenom u task.js (renderDocument) -- ovo nije Jinja/Handlebars
+  sablon, samo {{...}} markeri.
+
+  Namerno fiktivna, generička "interna baza" -- ne oponasa nijedan stvarni
+  drzavni registar (APR i sl.), da se izbegne utisak zvanicnog dokumenta.
+-->
+<div class="document" id="document-root">
+  <header class="document-header">
+    <div class="document-agency">INTERNA BAZA PRIVREDNIH SUBJEKATA</div>
+    <h1>Izvod o privrednom subjektu</h1>
+  </header>
+
+  <dl class="document-fields">
+    <dt>Naziv firme</dt>
+    <dd><span data-field="company_name" class="field">{{company_name}}</span></dd>
+
+    <dt>PIB</dt>
+    <dd><span data-field="pib" class="field">{{pib}}</span></dd>
+
+    <dt>Matični broj</dt>
+    <dd><span data-field="registration_number" class="field">{{registration_number}}</span></dd>
+
+    <dt>Grad</dt>
+    <dd><span data-field="city" class="field">{{city}}</span></dd>
+
+    <dt>Ulica</dt>
+    <dd><span data-field="street" class="field">{{street}}</span></dd>
+
+    <dt>Broj</dt>
+    <dd><span data-field="street_number" class="field">{{street_number}}</span></dd>
+
+    <dt>Kontakt osoba</dt>
+    <dd><span data-field="contact_person" class="field">{{contact_person}}</span></dd>
+
+    <dt>Telefon</dt>
+    <dd><span data-field="contact_phone" class="field">{{contact_phone}}</span></dd>
+  </dl>
+</div>

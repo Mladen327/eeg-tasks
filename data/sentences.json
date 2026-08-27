@@ -1,0 +1,3746 @@
+[
+  {
+    "id": "S1_0001",
+    "text": "Jos jednom hvala na pomoci.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0002",
+    "text": "Hvala vam na brzom odgovoru.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0003",
+    "text": "Nadao sam se da hoce.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0004",
+    "text": "Pozeli mi srecu sa Ljiljanom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0005",
+    "text": "Kaze da ima nekoliko ideja.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0006",
+    "text": "Od nula do pet procenata.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0007",
+    "text": "Mislim da je sada gotovo.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0008",
+    "text": "Hotelski vaucer je poslat imejlom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0009",
+    "text": "Efikasnije je kada su objedinjeni.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0010",
+    "text": "Mislim da je ovo dobro.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0011",
+    "text": "Saopstenje za javnost je objavljeno.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0012",
+    "text": "Ivan Petrovic ce podneti izvestaj.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0013",
+    "text": "Danas mesoviti signali od Delte.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0014",
+    "text": "Nikada nisam radio sa njom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0015",
+    "text": "Aleksandar vrsi pritisak na mene.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0016",
+    "text": "Putni troskovi se prijavljuju racunovodstvu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0017",
+    "text": "Mnogo vam hvala na poruci.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0018",
+    "text": "Mozete li me pozvati kuci?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0019",
+    "text": "Kako vam se svidja Blackberry?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0020",
+    "text": "Da li se to desilo?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0021",
+    "text": "Posao sa Sirmiumom je zakljucen.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0022",
+    "text": "Pokusavam da dobijem Milosa telefonom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0023",
+    "text": "Uskoro cu vam javiti vise.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0024",
+    "text": "Konferencijski hotel nudi popust grupama.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0025",
+    "text": "To bi bila dobra ideja.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0026",
+    "text": "Svaki dan same dobre vesti.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0027",
+    "text": "Dragan je jutros bio odlican.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0028",
+    "text": "Hvala vam na svoj podrsci.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0029",
+    "text": "Mozes li to da obavis?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0030",
+    "text": "Sirmium Distribucija je upravo preuzeta.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0031",
+    "text": "Analiza troskova pokazuje znacajnu ustedu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0032",
+    "text": "Bice veoma mirno cele nedelje.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0033",
+    "text": "Ona preuzima Sektor za finansije.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0034",
+    "text": "Ne znam sta cu raditi.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0035",
+    "text": "Zaista bih voleo da znam.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0036",
+    "text": "Nisam mogao da rizikujem neizvesnost.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0037",
+    "text": "Jedina izmena bila bi datum.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0038",
+    "text": "Postoji clanak o pravnom sektoru.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0039",
+    "text": "Revizor je zatrazio dodatnu dokumentaciju.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0040",
+    "text": "Sve ovo je tako nestvarno.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0041",
+    "text": "Ne moze sebi da pomogne.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0042",
+    "text": "Ipak sam otvoren za to.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0043",
+    "text": "Hoces li doci po mene?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0044",
+    "text": "Jesi li jutros citao Politiku?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0045",
+    "text": "Ne zaboravi da se molis.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0046",
+    "text": "Malo nam nedostaje jednokratnih casa.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0047",
+    "text": "Troskovi poslovanja su strogo kontrolisani.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0048",
+    "text": "Sta se desava sa Deltom?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0049",
+    "text": "Jos uvek sam u Pirotu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0050",
+    "text": "Mislim da nam ide dobro.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0051",
+    "text": "Zoran Djuric donosi tu odluku.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0052",
+    "text": "Na putu smo za Valjevo.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0053",
+    "text": "Da li smo sredili Kragujevac?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0054",
+    "text": "Jeste li videli Radmilinu poruku?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0055",
+    "text": "Profitabilnost odeljenja je znacajno poboljsana.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0056",
+    "text": "Da li je vec zavrsila?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0057",
+    "text": "Da li vas dvoje razgovarate?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0058",
+    "text": "Dogovorio sam uslove sa Bobanom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0059",
+    "text": "Gde da idem na rucak?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0060",
+    "text": "Da li smo to planirali?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0061",
+    "text": "Hajde da razgovaramo o tome.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0062",
+    "text": "Prestanite ponovo da radite vikendom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0063",
+    "text": "Kadrovska evidencija se redovno azurira.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0064",
+    "text": "Tako da pise Sirmium Tehnologije.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0065",
+    "text": "Ima li vesti iz Krusevca?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0066",
+    "text": "Da li ce to funkcionisati?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0067",
+    "text": "U redu je za mene.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0068",
+    "text": "Sta se desilo sa Milanom?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0069",
+    "text": "Koji je vas broj telefona?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0070",
+    "text": "Da li ste ovo dobili?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0071",
+    "text": "Godisnji odmor se planira unapred.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0072",
+    "text": "Bilo koje vreme u cetvrtak.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0073",
+    "text": "Van grada sam do petka.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0074",
+    "text": "Pozvacu te da dogovorimo termin.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0075",
+    "text": "Mnogo bolje nego nositi laptop.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0076",
+    "text": "U procesu smo sprovodjenja izmene.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0077",
+    "text": "Obavestavacemo te o daljem toku.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0078",
+    "text": "Zaposleni trazi produzenje godisnjeg odmora.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0079",
+    "text": "Prosledi to Petru na odobrenje.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0080",
+    "text": "Nisam upoznat ni sa jednim.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0081",
+    "text": "Razmatramo taj nacin sprovodjenja obuke.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0082",
+    "text": "Mozda je doslo do greske.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0083",
+    "text": "Meni ovo izgleda u redu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0084",
+    "text": "Da li dobijam dobar paket?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0085",
+    "text": "Postoji nekoliko neresenih poslovnih pitanja.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0086",
+    "text": "Arhiva dokumenata se redovno azurira.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0087",
+    "text": "Oboje smo jos uvek ovde.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0088",
+    "text": "Hajde da razgovaramo o troskovima.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0089",
+    "text": "Mozes li ponovo da posaljes?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0090",
+    "text": "Odlucio sam da ostanem ovde.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0091",
+    "text": "Mozes da razgovaras sa Milicom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0092",
+    "text": "Ili ces biti zauzet vecerom?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0093",
+    "text": "Na putu sam za Sabac.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0094",
+    "text": "Nabavna sluzba trazi dodatnu ponudu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0095",
+    "text": "Kako su stvari kod tebe?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0096",
+    "text": "Samo se salim s tobom.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0097",
+    "text": "Da li si dobro raspolozen?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0098",
+    "text": "Jos uvek sam u Nisu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0099",
+    "text": "Tvoj plan ima mnogo rupa.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0100",
+    "text": "Mi smo prilicno bespomocni posmatraci.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0101",
+    "text": "Molim vas posaljite mi imejl.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0102",
+    "text": "Racun je evidentiran u sistemu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0103",
+    "text": "Javi mi kada ovo dobijes.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0104",
+    "text": "Da li se osecas bolje?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0105",
+    "text": "Na sastanku sam do podneva.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0106",
+    "text": "Proizvodjaci reaguju na upravljanje cenama.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0107",
+    "text": "Zamolicu Danicu da te pozove.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0108",
+    "text": "Da li imas kopije ugovora?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0109",
+    "text": "Da li je Biljana ovde?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0110",
+    "text": "Faktura ceka odobrenje finansijskog direktora.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0111",
+    "text": "Mozes li mi ovde pomoci?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0112",
+    "text": "Molim te prosledi Vukasinu Stankovicu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0113",
+    "text": "Molim te posalji Marku Simicu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0114",
+    "text": "Mislim da postoje tri posla.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0115",
+    "text": "Odgovarao sam na Sarin komentar.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0116",
+    "text": "Onda treba da idu kuci.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0117",
+    "text": "Pobrinite se da budu azurni.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0118",
+    "text": "Porudzbina je poslata dobavljacu jutros.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0119",
+    "text": "Bolje nego u poslednje vreme.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0120",
+    "text": "Potrebno pre sastanka upravnog odbora.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0121",
+    "text": "Vec sam odobrio i prosledio.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0122",
+    "text": "Ovim cu se pozabaviti popodne.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0123",
+    "text": "U redu je za mene.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0124",
+    "text": "Kada vrsimo pregled sa Sirmiumom?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0125",
+    "text": "Dobavljac kasni sa isporukom robe.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0126",
+    "text": "Veceras sam van grada poslovno.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0127",
+    "text": "Koliko dugo mozete da kupujete?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0128",
+    "text": "Nisam shvatio da ih pozajmljujemo.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0129",
+    "text": "Moglo bi trajati sat vremena.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0130",
+    "text": "Sledece nedelje putujem van zemlje.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0131",
+    "text": "Bicu dostupan za nekoliko minuta.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0132",
+    "text": "Nema potrebe slati u Vranje.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0133",
+    "text": "Molim vas potvrdite termin sastanka.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0134",
+    "text": "Pritisak da zavrsim svoj pregled.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0135",
+    "text": "Javljaj mi sta se desava.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0136",
+    "text": "Da li ce biti isporuceno?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0137",
+    "text": "Ovo ce mi ulepsati nedelju.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0138",
+    "text": "Mogu da pogledam to veceras.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0139",
+    "text": "Ne mogu to da uradim.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0140",
+    "text": "Ovo mi deluje u redu.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0141",
+    "text": "Rok za izvestaj je produzen.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0142",
+    "text": "Javi mi ako nesto propustim.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0143",
+    "text": "Radimo na ovome dok razgovaramo.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0144",
+    "text": "Mozes li sacekati do ponedeljka?",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0145",
+    "text": "Mozda mozes ranije da odes.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0146",
+    "text": "Slusacu na liniji jedno vreme.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0147",
+    "text": "Mozda imam nesto u kancelariji.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0148",
+    "text": "Miodrag Ristic radi na ovome.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0149",
+    "text": "Dokumenta se moraju dostaviti sutra.",
+    "n_words": 5,
+    "length_class": "low",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0150",
+    "text": "Javicu se svima ponovo kasnije danas.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0151",
+    "text": "To cemo resiti sutra sa Vladanom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0152",
+    "text": "Rezervacija hotela za direktora je potvrdjena.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0153",
+    "text": "Kakav je status pregovora sa Sirmiumom?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0154",
+    "text": "Pokusacu da nabavim kopiju tog odobrenja.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0155",
+    "text": "Sluzbeni put pocinje u ponedeljak ujutru.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0156",
+    "text": "Moramo ih postepeno uvoditi u ovo.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0157",
+    "text": "Prosledjujem sve mejlove na njenu paznju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0158",
+    "text": "Hotel u Novom Sadu je rezervisan.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0159",
+    "text": "Pokusacu da vas kontaktiram u sredu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0160",
+    "text": "Imas li broj telefona za Petra?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0161",
+    "text": "Molim vas potvrdite rezervaciju za konferenciju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0162",
+    "text": "Kako mozemo doci do ovih odgovora?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0163",
+    "text": "Pozovi me da me unapred obavestis.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0164",
+    "text": "Putni nalog je potpisan i overen.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0165",
+    "text": "Uzmi ono sto mozes da dobijes.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0166",
+    "text": "Sumnjam da je to predvidjeno prognozom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0167",
+    "text": "Smestaj za tim je obezbedjen unapred.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0168",
+    "text": "Planiram da sutra budem u kancelariji.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0169",
+    "text": "Da li je ovo standardna formulacija?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0170",
+    "text": "Rezervisali smo salu za poslovni sastanak.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0171",
+    "text": "Razgovaracu sa Nemanjom Jovanovicem i advokatima.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0172",
+    "text": "Pretpostavljam da i ti tako mislis.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0173",
+    "text": "Povratna karta se kupuje sledece nedelje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0174",
+    "text": "Molim vas koordinirajte se sa njim.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0175",
+    "text": "Sastanak sa narodnim poslanicima u Beogradu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0176",
+    "text": "Prevoz do aerodroma je blagovremeno organizovan.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0177",
+    "text": "Sastanak sa partnerima u Novom Sadu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0178",
+    "text": "Konferencijski poziv sa partnerima u utorak.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0179",
+    "text": "Sluzbeni automobil je na raspolaganju timu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0180",
+    "text": "Mislim da su to pravi datumi.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0181",
+    "text": "Delegacija stize u Kragujevac u utorak.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0182",
+    "text": "Evo tacaka za razgovor za Deltu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0183",
+    "text": "Treba da se povuku i razmisle.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0184",
+    "text": "Smestaj je placen sluzbenom platnom karticom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0185",
+    "text": "Da li ste mislili na Vasica?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0186",
+    "text": "Samo sam zeleo da se javim.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0187",
+    "text": "Kvartalni izvestaj saljem vam do petka.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0188",
+    "text": "Zelim da sredim sve te stvari.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0189",
+    "text": "Molim vas pratite pazljivo pitanje obezbedjenja.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0190",
+    "text": "Finansijski izvestaj Delta Prometa je odobren.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0191",
+    "text": "Da li je to vec pomenuto?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0192",
+    "text": "Veoma sam uzivao u nasem razgovoru.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0193",
+    "text": "Bilans stanja je pripremljen za reviziju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0194",
+    "text": "Molim vas posaljite Delti na komentar.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0195",
+    "text": "Da li ste danas u kancelariji?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0196",
+    "text": "Prihodi su porasli u ovom kvartalu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0197",
+    "text": "Da li se desava nesto znacajno?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0198",
+    "text": "To bi verovatno bila skupa opcija.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0199",
+    "text": "Izvestaj o rashodima je u izradi.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0200",
+    "text": "Uglavnom je rec o prijateljskom pozivu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0201",
+    "text": "Mogu vam dati vise detalja kasnije.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0202",
+    "text": "Finansijski tim analizira mesecne rezultate poslovanja.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0203",
+    "text": "Ne zeli da otkrije trgovinske pozicije.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0204",
+    "text": "Pokusao sam ranije da vas dobijem.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0205",
+    "text": "Budzet za sledecu godinu je usvojen.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0206",
+    "text": "Moze li Marko Vukovic da ucestvuje?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0207",
+    "text": "Marko Vukovic je slobodan zbog Jovane.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0208",
+    "text": "Analiza pokazuje pad prihoda ovog meseca.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0209",
+    "text": "Opcije mozemo razmotriti pocetkom sledece nedelje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0210",
+    "text": "Verovatno cu te pozvati za vikend.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0211",
+    "text": "Finansijski direktor Sirmium Grupe predstavlja izvestaj.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0212",
+    "text": "Sve ce jednog dana biti javno.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0213",
+    "text": "Mislim da smo svi prilicno dobro.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0214",
+    "text": "Bilans uspeha se priprema svakog kvartala.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0215",
+    "text": "Dobro je znati da to postoji.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0216",
+    "text": "Cak je i Dragan bio impresioniran.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0217",
+    "text": "Analiticar je uporedio rezultate sa planom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0218",
+    "text": "Poznajem nekoliko ljudi koji tamo rade.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0219",
+    "text": "Koliki je target za ovaj mesec?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0220",
+    "text": "Investicije su uskladjene sa finansijskim planom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0221",
+    "text": "Mozete li pokusati da je pozovete?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0222",
+    "text": "Da li smo dobili nase nazad?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0223",
+    "text": "Prognoza prihoda je revidirana na vise.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0224",
+    "text": "Mozete li mi zavrsiti Milosevo pismo?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0225",
+    "text": "Javite mi ako padne jos nize.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0226",
+    "text": "Kontrola troskova ostaje prioritet ovog kvartala.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0227",
+    "text": "Onda hajde da odsednemo u centru.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0228",
+    "text": "Treba da razgovaramo o ovom mesecu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0229",
+    "text": "Zahtev za godisnji odmor je odobren.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0230",
+    "text": "Da li imamo nekoga u Zrenjaninu?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0231",
+    "text": "Mislim da treba da pozurite Kostica.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0232",
+    "text": "Obuka za nove zaposlene pocinje sutra.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0233",
+    "text": "Jeste li vec sklopili neke poslove?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0234",
+    "text": "David da li je poslato?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0235",
+    "text": "Kadrovska sluzba priprema ugovor o radu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0236",
+    "text": "U cemu je problem sa troskovima?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0237",
+    "text": "Razgovarao sam jutros sa Zoricom Kostic.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0238",
+    "text": "Prijava za obuku je popunjena ispravno.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0239",
+    "text": "Mislim da treba da sprovedemo ugovor.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0240",
+    "text": "Sta se desilo sa Markom Jovanovicem?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0241",
+    "text": "Zaposleni je uspesno zavrsio probni rad.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0242",
+    "text": "Javi mi ako je plan drugaciji.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0243",
+    "text": "Razgovor za posao je zakazan sutra.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0244",
+    "text": "Javicu mu se telefonom radi potvrde.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0245",
+    "text": "Ova nedelja je bila veoma teska.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0246",
+    "text": "Novi tim se obucava ovog meseca.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0247",
+    "text": "Hvala sto si proverio sa mnom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0248",
+    "text": "Javi mi kako mogu da pomognem.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0249",
+    "text": "Zahtev za premestaj je razmotren pazljivo.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0250",
+    "text": "Nemam nikakva dokumenta o ovoj transakciji.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0251",
+    "text": "Da li smo dodelili zaposlene Delti?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0252",
+    "text": "Ocena ucinka se obavlja jednom godisnje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0253",
+    "text": "Zaista ne zelim da se vratim.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0254",
+    "text": "To nije ponasanje koje sam ocekivao.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0255",
+    "text": "Ugovor o radu je potpisan danas.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0256",
+    "text": "Zato sto ima guzve u saobracaju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0257",
+    "text": "Zar nisi procitao moj prvi imejl?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0258",
+    "text": "Odsustvo sa posla je najavljeno blagovremeno.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0259",
+    "text": "I ne mogu da upalim telefon.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0260",
+    "text": "Da li te ja to komplimentisem?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0261",
+    "text": "Prijem novih radnika pocinje sledece nedelje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0262",
+    "text": "Rekao sam ti da pravis probleme.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0263",
+    "text": "Kako su dospeli na nas sprat?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0264",
+    "text": "Faktura je prosledjena racunovodstvu na overu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0265",
+    "text": "Da li je Vesna danas tu?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0266",
+    "text": "Odsutan sam iz kancelarije do srede.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0267",
+    "text": "Nabavka kancelarijskog materijala je odobrena danas.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0268",
+    "text": "Pretpostavljam da je put bio dobar?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0269",
+    "text": "Poslao sam ti poruku ranije danas.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0270",
+    "text": "Dobavljac Sirmium Komerc je poslao ponudu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0271",
+    "text": "Mislim da se plase masovnog odlaska.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0272",
+    "text": "Do sada napredujemo uz odlican prijem.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0273",
+    "text": "Faktura je placena u predvidjenom roku.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0274",
+    "text": "Sedim na aerodromu i cekam avion.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0275",
+    "text": "Svidjaju mi se Nikola i Uros.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0276",
+    "text": "Dokumentacija se cuva u arhivi preduzeca.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0277",
+    "text": "Moram da odem u Vladanovu kancelariju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0278",
+    "text": "Sta ce biti sa ovim projektom?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0279",
+    "text": "Skladiste je primilo novu posiljku robe.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0280",
+    "text": "Mislim da je to tacan odgovor.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0281",
+    "text": "GP je generalni partner u Delti.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0282",
+    "text": "Fakturisanje se obavlja krajem svakog meseca.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0283",
+    "text": "Da li ste razgovarali sa Anticem?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0284",
+    "text": "Moracu da mi se osvezi secanje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0285",
+    "text": "Arhiviranje ugovora je obavezno po pravilniku.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0286",
+    "text": "Uopste nisam dobio odgovor od Petra.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0287",
+    "text": "Sta mislite o Tamari i Nemanji?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0288",
+    "text": "Nabavni proces zahteva dodatno odobrenje uprave.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0289",
+    "text": "Sta se desava sa cenom akcija?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0290",
+    "text": "Trebalo bi da bude u redu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0291",
+    "text": "Racun je vracen zbog netacnih podataka.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0292",
+    "text": "Slobodan ce se pobrinuti za ovo.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0293",
+    "text": "Mozete li proveriti kako to stoji?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0294",
+    "text": "Fakture se skeniraju i arhiviraju digitalno.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0295",
+    "text": "Radio sam na unapredjenju razrednog nivoa.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0296",
+    "text": "Ne planiram nista posebno ove nedelje.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0297",
+    "text": "Nova nabavka je usaglasena sa budzetom.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0298",
+    "text": "Dacu vam svoje rukom pisane beleske.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0299",
+    "text": "Pozvacu vas kada stignem u kancelariju.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0300",
+    "text": "Sastanak tima je pomeren za sredu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0301",
+    "text": "Sirmium grupa se jos nije sastala.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0302",
+    "text": "Izvini sto sam propustio hor sinoc.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0303",
+    "text": "Dokumentacija za projekat je skoro gotova.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0304",
+    "text": "Pozovi me bilo kada za informacije.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0305",
+    "text": "Zapisnik sa sastanka je poslat svima.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0306",
+    "text": "Da li sistem radi ispravno jutros?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0307",
+    "text": "Jesi li se vratio u grad?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0308",
+    "text": "Rok za dostavu dokumenata istice sutra.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0309",
+    "text": "Izvini sto te drzim u neizvesnosti.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0310",
+    "text": "Samo smo preuzeli rasporede sa interneta.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0311",
+    "text": "Dnevni red sastanka je usaglasen unapred.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0312",
+    "text": "Ne znam kako se to desilo.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0313",
+    "text": "Molim te posalji to nama oboma.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0314",
+    "text": "Potpisana dokumentacija je poslata pravnoj sluzbi.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0315",
+    "text": "Zeleo bih da razgovaramo o tome.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0316",
+    "text": "Javi mi ako mogu da pomognem.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0317",
+    "text": "Rok za internu reviziju je pomeren.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0318",
+    "text": "Molim te obavesti Stefana i Katarinu.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0319",
+    "text": "Mozes li da pomognes oko ovoga?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0320",
+    "text": "Sastanak je otkazan zbog nedostatka kvoruma.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0321",
+    "text": "Dogovori se sa Snezanom oko formata.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0322",
+    "text": "Javi mi ako mogu da pomognem.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0323",
+    "text": "Zapisnici se arhiviraju posle svakog sastanka.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0324",
+    "text": "Da li da ti donesem nesto?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0325",
+    "text": "Sta se desava sa cenom akcija?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0326",
+    "text": "Predlog dnevnog reda je poslat unapred.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0327",
+    "text": "Da li je to u redu?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0328",
+    "text": "Mogu biti tamo za sat vremena.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0329",
+    "text": "Rok za odgovor je vec istekao.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0330",
+    "text": "Koliko brzo ti je to potrebno?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0331",
+    "text": "Koji nivo detalja ti je potreban?",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0332",
+    "text": "Sastanak je produzen zbog dodatnih pitanja.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0333",
+    "text": "Javi mi gde bi mogli biti.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0334",
+    "text": "Sada sam zvanicno zavisnik od Blekberija.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0335",
+    "text": "Dokumentacija je overena i prosledjena arhivi.",
+    "n_words": 6,
+    "length_class": "medium",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0336",
+    "text": "Poresko odeljenje nam je dalo isti odgovor.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0337",
+    "text": "Kontaktiracu ga ponovo cim se strasti stisaju.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0338",
+    "text": "Kako biste objasnili razliku izmedju to dvoje?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0339",
+    "text": "Ovo finansiranje se prikazuje kao manjinski udeo.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0340",
+    "text": "Da li je ovo jedini slobodan termin?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0341",
+    "text": "Zatrpan sam poslom i nisam u kancelariji.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0342",
+    "text": "Let za Beograd je vec zvanicno zakazan.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0343",
+    "text": "Stevan i ja cemo biti u Kragujevcu.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0344",
+    "text": "Dostupan sam na mobilni kada dobijete podatke.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0345",
+    "text": "Pretpostavljam da je to za sada sve.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0346",
+    "text": "Javi Marku Simicu danas ako ga zelis.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0347",
+    "text": "Samo cu je zamoliti da pozove Tamaru.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0348",
+    "text": "Mislim da ce ovo sasvim dobro proci.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0349",
+    "text": "Ali verujem da ce odgovor biti da.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0350",
+    "text": "Avionska karta je kupljena za Vladimira Savica.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0351",
+    "text": "Imali smo sastanak upravnog odbora u cetvrtak.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0352",
+    "text": "Zvala je i zeli da dodje jutros.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0353",
+    "text": "Javite mi ako treba nesto da prilagodim.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0354",
+    "text": "Ovo je izuzetno nesrecno saopstenje za javnost.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0355",
+    "text": "Osnovni ugovor se poziva na trgovinsko poslovanje.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0356",
+    "text": "Sutra oko podneva krecem da uhvatim let.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0357",
+    "text": "Sluzbeno putovanje je konacno odobreno od rukovodstva.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0358",
+    "text": "Dusan odlicno obavlja posao po ovom pitanju.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0359",
+    "text": "Da li je jos neko nesto cuo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0360",
+    "text": "Zar oni ovde nemaju odredjene sukobe interesa?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0361",
+    "text": "Da li je Sirmium uputio konkretan zahtev?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0362",
+    "text": "Cuo sam vase ime sinoc na televiziji.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0363",
+    "text": "Da li drzava ima kopije svih programa?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0364",
+    "text": "PS vas poklon mi je uvelicao dan.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0365",
+    "text": "Rezervacija je otkazana zbog iznenadne promene plana.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0366",
+    "text": "Da li treba o tome da razgovaramo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0367",
+    "text": "Javicu vam kako je prosao poziv ujutru.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0368",
+    "text": "Raspodela budzeta od strane Kostica je odlozena.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0369",
+    "text": "Javicu vam ishod kada se to resi.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0370",
+    "text": "Trenutno nisam dovoljno upucen u ovu diskusiju.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0371",
+    "text": "Iskrsao mi je sastanak u poslednji cas.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0372",
+    "text": "Putovanje je produzeno zbog dodatnih poslovnih sastanaka.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0373",
+    "text": "Delovao je dobro kada sam ga pokupio.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0374",
+    "text": "Trazim od tebe neke ideje za poklone.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0375",
+    "text": "Da li se Jelena vraca na svopove?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0376",
+    "text": "Mozda iskoristim priliku da obavim neke poslove.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0377",
+    "text": "Mozemo raditi sa tim na oba nacina.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0378",
+    "text": "Nije da ces biti placen za to.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0379",
+    "text": "Godisnji finansijski izvestaj je zvanicno objavljen danas.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0380",
+    "text": "Mozes li pomoci da se ovo razjasni?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0381",
+    "text": "Mozda ce u cetvrtak biti manje saobracaja.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0382",
+    "text": "Boban Nikolic je onaj koga najbolje poznajem.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0383",
+    "text": "Pitam se sta ce doneti sledeca nedelja.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0384",
+    "text": "Ne zelimo da ispadnemo lose pred Deltom.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0385",
+    "text": "Mozda ce Dragan sutra ici u Sombor.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0386",
+    "text": "Deluje kao da je ona za to.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0387",
+    "text": "Izvestaj o likvidnosti je hitno potreban timu.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0388",
+    "text": "Cujem da tim lider ima ogromne probleme.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0389",
+    "text": "Treba nam kopija svega sto oni gledaju.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0390",
+    "text": "Hajde da to ostavimo dok ne krenemo.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0391",
+    "text": "Naci cu nekoga ko ce to uraditi.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0392",
+    "text": "Ovo predstavlja problem za vreme ponovnog pokretanja.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0393",
+    "text": "Na uporednoj osnovi ne mogu opravdati vise.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0394",
+    "text": "Novi zaposleni Aleksandar Mitrovic pocinje u ponedeljak.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0395",
+    "text": "Trenutno sam na sastanku sa vasim ljudima.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0396",
+    "text": "Sigurno ovo mozemo pokriti unutar Delta tima?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0397",
+    "text": "Da li ste jutros razgovarali sa Anom?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0398",
+    "text": "Novi Sad je mesto sastanka sa Dusanom.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0399",
+    "text": "Sastanak sa Sirmiumom je bio veoma koristan.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0400",
+    "text": "Da li ovde treba nesto da uradimo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0401",
+    "text": "Da li ti i Vladimir nesto smisljate?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0402",
+    "text": "Zahtev za bolovanje je predat kadrovskoj sluzbi.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0403",
+    "text": "Da li bi zeleo da preuzmes Filipa?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0404",
+    "text": "Molim te izmeni u skladu sa tim.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0405",
+    "text": "Kako postupamo sa ostalima u toj grupi?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0406",
+    "text": "Da li je Goran saglasan sa tim?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0407",
+    "text": "Da li je dobio bonus prilikom potpisivanja?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0408",
+    "text": "Da li je ovo cena za konferenciju?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0409",
+    "text": "Konkurs za novo radno mesto je otvoren.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0410",
+    "text": "Mislim da treba da razmotrimo ovaj zahtev.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0411",
+    "text": "Trenutno radim na tome sa Marijom Kostic.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0412",
+    "text": "Mislim da ga je Danica Todorovic zvala.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0413",
+    "text": "Ocekivao bih odgovor sto je pre moguce.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0414",
+    "text": "Videcu sta mogu da saznam za tebe.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0415",
+    "text": "Zasto ne pitas Saru Ilic za detalje?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0416",
+    "text": "Zaposlenima je nedavno odobreno dodatno strucno usavrsavanje.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0417",
+    "text": "Jedva cekam da dobijem svoju polovinu nagrade.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0418",
+    "text": "Pokusavam istovremeno da vozim i pisem imejl.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0419",
+    "text": "Mozda bi trebalo da tamo ostanem zauvek.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0420",
+    "text": "Sreda je definitivno dan za vrucu cokoladu.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0421",
+    "text": "Bolje da se ne radi o meni.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0422",
+    "text": "A kako bih ja isao zbog posla?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0423",
+    "text": "Hajde da se uverimo da smo spremni.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0424",
+    "text": "Kadrovska sluzba organizuje internu obuku svih zaposlenih.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0425",
+    "text": "Javite nam ako imate predloge za zamenu.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0426",
+    "text": "Sticem utisak da ove poruke ne stizu.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0427",
+    "text": "Da li je potrebno da budes tamo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0428",
+    "text": "Hvala na pomoci oko brzog organizovanja ovoga.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0429",
+    "text": "Da li si se razlikovao od mene?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0430",
+    "text": "Razmotricu tvoje predloge i javiti ti se.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0431",
+    "text": "Ugovor sa Delta Agrarom je obnovljen danas.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0432",
+    "text": "On je prilicno upucen u sve to.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0433",
+    "text": "Na koji broj treba da te pozove?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0434",
+    "text": "Da li se danas desava nesto uzbudljivo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0435",
+    "text": "Izvini se Petru Nikolicu u moje ime.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0436",
+    "text": "Molim te posalji direktne izvestaje za Tomija.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0437",
+    "text": "Kontakt osoba u Delti je Radovan Obradovic.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0438",
+    "text": "Nabavka opreme je planirana za sledeci kvartal.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0439",
+    "text": "Da li znamo sta nam je potrebno?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0440",
+    "text": "Mozes li da uradis i Delta ugovore?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0441",
+    "text": "Mozda ce zeleti da razgovaraju sa vama.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0442",
+    "text": "Sirmium je nekoliko puta kupovan i prodavan.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0443",
+    "text": "Sledeci put zamolite Nemanju da me pozove.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0444",
+    "text": "Samo sedim i ne radim nista posebno.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0445",
+    "text": "Da li zelite prethodno negde da rucamo?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0446",
+    "text": "Sastanak upravnog odbora pocinje tacno u podne.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0447",
+    "text": "Nisam cuo komentar od Natase ove nedelje.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0448",
+    "text": "Onda mozemo da odemo u prodavnicu igracaka.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0449",
+    "text": "Pokusacu da sednem sa njim sledece nedelje.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0450",
+    "text": "Hvala vam na vodjstvu po ovom pitanju.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0451",
+    "text": "Gordana i Petar ce prisustvovati umesto mene.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0452",
+    "text": "Da li ova gotovina ulazi u Deltu?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0453",
+    "text": "Sastanak sa Sirmium Konsaltingom je uspesno odrzan.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0454",
+    "text": "To sam izmenio u jednoj prethodnoj verziji.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0455",
+    "text": "Pregledacu i poslati ti poruku tokom vikenda.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0456",
+    "text": "Pozvacu te kada sidjem dole sutra ujutru.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0457",
+    "text": "Molim te pozovi sutra ako je moguce.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0458",
+    "text": "Mislim da treba da iznesemo konkretan broj.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0459",
+    "text": "Prodaja Delte je pravi potez za sve.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0460",
+    "text": "Koji period pokriva pretpostavka o maksimalnoj tarifi?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0461",
+    "text": "Dokumentacija projekta zahteva dodatnu proveru glavnog pravnika.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  },
+  {
+    "id": "S1_0462",
+    "text": "Hoces li nam se pridruziti na rucku?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0463",
+    "text": "Da li se tvoj cetvrti kvartal promenio?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0464",
+    "text": "Da li si mi otvorio korporativni nalog?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0465",
+    "text": "Izgleda da tamo nemamo nikakav pozitivan prihod.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0466",
+    "text": "Da li ti je to potrebno danas?",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": true
+  },
+  {
+    "id": "S1_0467",
+    "text": "Izgleda da su Sirmium i Delta pomesani.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "enron",
+    "is_question": false
+  },
+  {
+    "id": "S1_0468",
+    "text": "Svi potrebni materijali za sastanak su pripremljeni.",
+    "n_words": 7,
+    "length_class": "high",
+    "source": "constructed",
+    "is_question": false
+  }
+]
