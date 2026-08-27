@@ -3,5 +3,6 @@
   "assignments": {},
   "seed": null,
   "count": 0,
-  "_note": "Test-only fajl za GitHub Pages deploy (grana gh-pages) -- prava data/participant_codes.json sa dodelama ispitanicima NIKAD ne ide u git (vidi .gitignore). Ovde je namerno prazan: jedina upotrebljiva sifra na ovoj probnoj instanci je DEMO."
+  "demo_only": true,
+  "_note": "Test-only fajl za GitHub Pages deploy (grana gh-pages) -- prava data/participant_codes.json sa dodelama ispitanicima NIKAD ne ide u git (vidi .gitignore). Ovde je namerno prazan: jedina upotrebljiva sifra na ovoj probnoj instanci je DEMO. demo_only:true prebacuje pocetni ekran na dugme 'Demonstracija' umesto polja za unos sifre (core/intro.js)."
 }
