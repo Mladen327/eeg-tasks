@@ -208,6 +208,7 @@ async function main() {
     itemsHash,
     seed: itemsData.seed,
   });
+  clearSessionStateIfFinished(session, order, TASK_ID);
 }
 
 // showFatal sada dolazi iz core/screen.js.
