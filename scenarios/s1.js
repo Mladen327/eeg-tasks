@@ -347,6 +347,11 @@ async function runEntryPhase(item, itemIndex, n) {
       input, sentenceIndex: s.sentence_index,
       focusTime: null, first: null, last: null, count: 0, backspaces: 0,
       intervals: [], lastKeyTime: null,
+      // Redni broj OVOG polja-submit-a u OVOJ stavci (ne globalno) --
+      // medjuverzije unosa su mera, ne sum (uputstvo: "Prosiri belezenje"),
+      // pa se svaki field_submitted (i is_final:false i is_final:true) sad
+      // nosi eksplicitan redosled umesto da se izvodi iz polozaja u logu.
+      revisionCount: 0,
     };
     fields.push(fieldState);
     const fieldIndex = fields.length - 1;
@@ -426,7 +431,12 @@ async function runEntryPhase(item, itemIndex, n) {
     if (fieldBeforePeek < 0) fieldBeforePeek = 0;
     peekOpen = true;
     peekStart = performance.now();
-    Logger.log({ event: "peek_start", item: itemIndex, item_id: item.item_id });
+    // Stanje SVIH N polja U TOM TRENUTKU, ukljucujuci polje koje je jos
+    // fokusirano (jos NIJE emitovalo field_submitted za ovu verziju, jer
+    // otvaranje uvida ne izaziva blur) -- bez ovoga bi upravo otkucana, jos
+    // nepotvrdjena vrednost bila nevidljiva u logu (uputstvo, tacka 2).
+    const fieldsSnapshot = fields.map((f) => ({ sentence_index: f.sentenceIndex, text: f.input.value }));
+    Logger.log({ event: "peek_start", item: itemIndex, item_id: item.item_id, fields_snapshot: fieldsSnapshot });
     renderSentenceListInto(els["peek-list"], item.sentences);
     els["btn-peek-open"].classList.add("hidden");
     els["peek-overlay"].classList.remove("hidden");
@@ -521,10 +531,14 @@ async function runEntryPhase(item, itemIndex, n) {
 
 // Beleze se SVA napustanja polja (svaki blur), is_final:false za sve osim
 // tacno jednog po polju -- onog poslatog pri zavrsetku stavke (finishEntry),
-// koji nosi is_final:true i predstavlja konacnu vrednost (SPEC_S1_demo.md
-// sekcija 8, pravilo preuzeto iz Scenarija 2 bez izmene).
+// koji nosi is_final:true i predstavlja konacnu vrednost za PRIMARNU
+// tacnost (SPEC_S1_demo.md sekcija 8, pravilo preuzeto iz Scenarija 2 bez
+// izmene) -- ranije verzije se NE odbacuju, "revision" ih redom obelezava
+// (uputstvo: "medjuverzije unosa nisu sum nego mera").
 function emitFieldSubmitted(item, itemIndex, fieldState, isFinal) {
   const text = fieldState.input.value;
+  const revision = fieldState.revisionCount;
+  fieldState.revisionCount += 1;
   Logger.log({
     event: "field_submitted",
     item: itemIndex,
@@ -532,6 +546,7 @@ function emitFieldSubmitted(item, itemIndex, fieldState, isFinal) {
     sentence_index: fieldState.sentenceIndex,
     entered_text: text,
     is_final: isFinal,
+    revision,
     first_keystroke_ms: fieldState.focusTime !== null && fieldState.first !== null
       ? round1(fieldState.first - fieldState.focusTime) : null,
     keystroke_count: fieldState.count,

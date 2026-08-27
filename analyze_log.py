@@ -1297,6 +1297,151 @@ def s1_typing_measures(intervals_by_class: dict) -> dict:
     return out
 
 
+def s1_item_meta(item_starts):
+    """(path, item) -> (participant_id, n, item_id) -- veza ka referenci u
+    items_S1.json, potrebna svakom dogadjaju koji sam po sebi ne nosi n/pid
+    (peek_start, field_submitted)."""
+    meta = {}
+    for e in item_starts:
+        meta[(e.get("_path"), e.get("item"))] = (e.get("_participant"), str(e.get("_n")), e.get("item_id"))
+    return meta
+
+
+def s1_collect_field_revisions(all_events):
+    """(path, item, sentence_index) -> SVE field_submitted verzije (ne samo
+    is_final), sortirane po "revision". Tacka 1 uputstva ("Prosiri
+    belezenje"): medjuverzije unosa su mera, ne sum -- ranije verzije se ne
+    odbacuju, is_final ostaje rezervisano za primarnu tacnost."""
+    by_key = defaultdict(list)
+    for e in all_events:
+        if e.get("event") == "field_submitted":
+            key = (e.get("_path"), e.get("item"), e.get("sentence_index"))
+            by_key[key].append(e)
+    for key in by_key:
+        by_key[key].sort(key=lambda e: e.get("revision", 0))
+    return by_key
+
+
+def s1_collect_peeks(all_events):
+    """(path, item) -> lista {t_start, t_end, snapshot} sortirana po t_start.
+    snapshot je {sentence_index: uneti_tekst} iz fields_snapshot na
+    peek_start (tacka 2 uputstva: stanje svih N polja u trenutku uvida,
+    ukljucujuci jos nepotvrdjenu vrednost u fokusiranom polju)."""
+    starts, ends = defaultdict(list), defaultdict(list)
+    for e in all_events:
+        key = (e.get("_path"), e.get("item"))
+        if e.get("event") == "peek_start":
+            starts[key].append(e)
+        elif e.get("event") == "peek_end":
+            ends[key].append(e)
+    peeks_by_item = defaultdict(list)
+    for key, start_list in starts.items():
+        s_sorted = sorted(start_list, key=lambda e: e.get("t", 0))
+        e_sorted = sorted(ends.get(key, []), key=lambda e: e.get("t", 0))
+        for s, en in zip(s_sorted, e_sorted):
+            snapshot = {fs["sentence_index"]: fs["text"] for fs in (s.get("fields_snapshot") or [])}
+            peeks_by_item[key].append({"t_start": s.get("t"), "t_end": en.get("t"), "snapshot": snapshot})
+    return peeks_by_item
+
+
+def s1_corrections_after_peek(peeks_by_item, revisions_by_field, item_meta, ref_index):
+    """Tacka 3 uputstva: za svako polje, uporedjuje vrednost NEPOSREDNO PRE
+    uvida (snimak sa peek_start) sa vrednoscu POSLE uvida (poslednja
+    revizija sa t > peek_end, do sledeceg uvida ili kraja stavke -- ako
+    nema nove revizije u tom prozoru, vrednost se smatra nepromenjenom, pa
+    se NE racuna kao izmena). Vraca listu izmenjenih polja, svaka
+    klasifikovana po TRANZICIJI tacnosti (strict): corrected/regressed/
+    revised_still_incorrect/revised_still_correct -- vrsta izmene trazena
+    uputstvom, izvedena iz vec postojece definicije tacnosti umesto nove
+    posebne taksonomije."""
+    results = []
+    for (path, item), peeks in peeks_by_item.items():
+        meta = item_meta.get((path, item))
+        if meta is None:
+            continue
+        pid, n, item_id = meta
+        by_idx = ref_index.get((pid, n, item_id))
+        if by_idx is None:
+            continue
+        for i, peek in enumerate(peeks):
+            next_t_start = peeks[i + 1]["t_start"] if i + 1 < len(peeks) else float("inf")
+            if peek["t_end"] is None or next_t_start is None:
+                continue
+            for sentence_index, before_text in peek["snapshot"].items():
+                ref_entry = by_idx.get(sentence_index)
+                if ref_entry is None:
+                    continue
+                revs = revisions_by_field.get((path, item, sentence_index), [])
+                after_candidates = [
+                    r for r in revs
+                    if r.get("t") is not None and peek["t_end"] < r["t"] <= next_t_start
+                ]
+                after_text = after_candidates[-1]["entered_text"] if after_candidates else before_text
+                before_norm, after_norm = s1_normalize_strict(before_text), s1_normalize_strict(after_text)
+                if before_norm == after_norm:
+                    continue
+                ref_norm = s1_normalize_strict(ref_entry["text"])
+                before_correct, after_correct = before_norm == ref_norm, after_norm == ref_norm
+                if not before_correct and after_correct:
+                    kind = "corrected"
+                elif before_correct and not after_correct:
+                    kind = "regressed"
+                elif not before_correct and not after_correct:
+                    kind = "revised_still_incorrect"
+                else:
+                    kind = "revised_still_correct"
+                results.append({"path": path, "item": item, "n": n, "sentence_index": sentence_index, "kind": kind})
+    return results
+
+
+def s1_permutation_measure(revisions_by_field, item_meta, ref_index):
+    """Tacka 4 uputstva: da li je recenica PRVO uneta u pogresno numerisano
+    polje pa PREMESTENA. Prva NEPRAZNA revizija polja X se poredi sa
+    referencama SVIH OSTALIH polja iste stavke; poklapanje sa poljem Y != X
+    je kandidat za permutaciju. "Ispravljena" ako finalna (najveca
+    revizija) vrednost polja X pogadja SOPSTVENU referencu -- inace je
+    "neispravljena" (isti slucaj koji sentence_order tip greske u
+    s1_classify_field vec hvata na finalnoj vrednosti, ovde eksplicitno
+    prijavljen kao par sa pocetnim stanjem)."""
+    by_item = defaultdict(dict)
+    for (path, item, sentence_index), revs in revisions_by_field.items():
+        by_item[(path, item)][sentence_index] = revs
+
+    results = []
+    for (path, item), fields_map in by_item.items():
+        meta = item_meta.get((path, item))
+        if meta is None:
+            continue
+        pid, n, item_id = meta
+        by_idx = ref_index.get((pid, n, item_id))
+        if by_idx is None:
+            continue
+        for sentence_index, revs in fields_map.items():
+            ref_entry = by_idx.get(sentence_index)
+            if ref_entry is None or not revs:
+                continue
+            first_nonempty = next((r for r in revs if (r.get("entered_text") or "").strip()), None)
+            if first_nonempty is None:
+                continue
+            first_norm = s1_normalize_strict(first_nonempty["entered_text"])
+            own_ref_norm = s1_normalize_strict(ref_entry["text"])
+            if first_norm == own_ref_norm:
+                continue
+            from_field = next(
+                (other_idx for other_idx, other_ref in by_idx.items()
+                 if other_idx != sentence_index and first_norm == s1_normalize_strict(other_ref["text"])),
+                None,
+            )
+            if from_field is None:
+                continue
+            final_norm = s1_normalize_strict(revs[-1].get("entered_text", ""))
+            results.append({
+                "path": path, "item": item, "n": n, "field": sentence_index,
+                "from_field": from_field, "corrected": final_norm == own_ref_norm,
+            })
+    return results
+
+
 def s1_analyze(blocks, ref_index, detail=False):
     all_events = []
     for path, session, events in blocks:
@@ -1466,6 +1611,32 @@ def s1_analyze(blocks, ref_index, detail=False):
         if vals:
             print(f"  N={n}: prosek {stats.mean(vals):.2f} uvida po stavci, "
                   f"ukupno vreme u uvidu prosek {stats.mean(ms_vals):.0f} ms  (stavki={len(vals)})")
+
+    # --- tacka 3: izmene POSLE uvida (poredjenje snimka sa peek_start
+    # naspram sledece revizije polja) ---
+    item_meta = s1_item_meta(item_starts)
+    revisions_by_field = s1_collect_field_revisions(all_events)
+    peeks_by_item = s1_collect_peeks(all_events)
+    corrections = s1_corrections_after_peek(peeks_by_item, revisions_by_field, item_meta, ref_index)
+    total_peeks = sum(len(v) for v in peeks_by_item.values())
+    print(f"\nIzmene polja POSLE uvida (poredjenje sa stanjem na pocetku uvida):")
+    if total_peeks:
+        print(f"  {len(corrections)} izmenjenih polja od {total_peeks} uvida "
+              f"({len(corrections) / total_peeks:.2f} po uvidu)")
+        kind_counts = Counter(c["kind"] for c in corrections)
+        for k in ("corrected", "regressed", "revised_still_incorrect", "revised_still_correct"):
+            print(f"    {k:24s} n={kind_counts.get(k, 0)}")
+    else:
+        print("  (nema uvida u ucitanim logovima)")
+
+    # --- tacka 4: permutacija -- recenica prvo u pogresnom polju, pa premestena ---
+    permutations = s1_permutation_measure(revisions_by_field, item_meta, ref_index)
+    print(f"\nPermutacija recenica (prva verzija polja odgovarala tudjoj referenci iste stavke): "
+          f"{len(permutations)} slucajeva")
+    if permutations:
+        corrected_n = sum(1 for p in permutations if p["corrected"])
+        print(f"    ispravljena (finalni odgovor tacan)        n={corrected_n}")
+        print(f"    neispravljena (finalni odgovor i dalje pogresan) n={len(permutations) - corrected_n}")
 
     # --- trajanje faze kodiranja, odvojeno user/auto ---
     print("\nTrajanje faze kodiranja (encoding_actual_ms), medijana / p90, po N i po nacinu prelaska:")
