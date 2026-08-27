@@ -11,7 +11,7 @@ iz sekcije 3.5 -- to je iskljucivo prikaz u app/task.js).
 
 Upotreba:
     python dump_item.py --participant DEMO --items 1 2
-    python dump_item.py --participant P07 --variant S3a --n 3 --items 5 12 30
+    python dump_item.py --participant <SIFRA> --variant S3a --n 3 --items 5 12 30
 """
 
 from __future__ import annotations
@@ -62,7 +62,7 @@ def format_table(rows: list[list[str]]) -> str:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--participant", required=True, help='npr. "DEMO", "P07"')
+    ap.add_argument("--participant", required=True, help='npr. "DEMO", ili stvarna sifra iz participant_codes.json')
     ap.add_argument("--variant", choices=["S3a", "S3b"], default="S3b")
     ap.add_argument("--n", type=int, choices=[3, 5, 7], default=5)
     ap.add_argument("--items", type=int, nargs="+", required=True,

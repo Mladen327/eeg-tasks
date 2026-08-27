@@ -34,10 +34,12 @@ s2-demo/ sam -- `app/index.html` ucitava deljeni `core/` i `data/` preko
 `"../../"`, pa URL uvek nosi `/s2-demo/` prefiks (ranije je nedostajao,
 davao je 404 na core/*.js -- ispravljeno).
 
-Otvoriti u pregledaču, na primer:
+Otvoriti u pregledaču, na primer (`<SIFRA>` je jedna od stvarnih šifri iz
+`data/participant_codes.json`, generisanih preko `generate_participant_codes.py`
+-- ne postoji fiksan format tipa "P07"):
 
 ```
-http://localhost:8000/s2-demo/app/index.html?participant=P07&n=5
+http://localhost:8000/s2-demo/app/index.html?participant=<SIFRA>&n=5
 http://localhost:8000/s2-demo/app/index.html?participant=DEMO&n=5&demo=1
 http://localhost:8000/s2-demo/app/index.html?practice=1
 ```
@@ -364,7 +366,7 @@ python analyze_log_s2.py --detail logs/*.jsonl
   numeričku vrednost (sekcija 7: rok se izvodi iz raspodele
   `first_keystroke_ms` tek posle pilota) -- kad se odredi, dodati konstantu
   `CELL_DEADLINE_MS` i granu u `runEntryPhase()`.
-- `DEMO_ITEM_CAP` (broj stavki u `&demo=1` režimu, podrazumevano 4) --
+- `DEMO_ITEM_CAP` (broj stavki u `&demo=1` režimu, podrazumevano 3) --
   imati na umu da je po stavci znatno duže nego u s3-demo-u (npr. N=7 samo
   faza kodiranja traje do 39s ako se ne završi ranije dugmetom "Spreman"),
   pa ceo demo blok na N=7 može trajati više minuta.

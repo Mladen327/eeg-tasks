@@ -6,7 +6,7 @@ upotrebljiv za pilot/glavnu studiju.
 
 Upotreba:
     python analyze_log.py logs/*.jsonl
-    python analyze_log.py logs/P07_S3b_5_20260825T101403Z.jsonl
+    python analyze_log.py logs/<SIFRA>_S3b_5_20260825T101403Z.jsonl
 """
 
 from __future__ import annotations

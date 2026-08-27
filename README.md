@@ -19,10 +19,12 @@ python generate_stimuli.py --scenario S1 --seed 20260825 --participants 40
 python server.py                                                # http :8000, ws :8767
 ```
 
-Otvoriti u pregledaču, na primer:
+Otvoriti u pregledaču, na primer (`<SIFRA>` je jedna od stvarnih šifri iz
+`data/participant_codes.json`, generisanih preko `generate_participant_codes.py`
+-- ne postoji fiksan format tipa "P07"):
 
 ```
-http://localhost:8000/app/index.html?participant=P07&n=5
+http://localhost:8000/app/index.html?participant=<SIFRA>&n=5
 http://localhost:8000/app/index.html?participant=DEMO&n=5&demo=1
 http://localhost:8000/app/index.html?practice=1
 ```
@@ -181,7 +183,7 @@ S2 nije promenjeno.
   (`item_gap_ms`, `block_duration_ms`).
 - `S1_ITEMS_PER_BLOCK`, `S1_PRACTICE_N`, `S1_PRACTICE_ITEMS` — vrh
   `generate_stimuli.py` (videti tačku 2 iznad).
-- `DEMO_ITEM_CAP` (4 stavke u `demo=1` režimu) — vrh `scenarios/s1.js`.
+- `DEMO_ITEM_CAP` (3 stavke u `demo=1` režimu) — vrh `scenarios/s1.js`.
 - `S1_BURST_MAX_MS` (500), `S1_PAUSE_MIN_MS` (1000) — pragovi za mere
   kucanja iz sekcije 6, vrh `analyze_log.py`.
 - `S1_CONFOUND_ALPHA` (0.05) — prag značajnosti za proveru konfunda
