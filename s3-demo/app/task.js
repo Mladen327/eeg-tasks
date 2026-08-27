@@ -287,7 +287,8 @@ function cacheEls() {
   [
     "screen-loading", "screen-global-intro", "screen-session-overview", "screen-instructions",
     "screen-task", "screen-gap", "screen-end", "screen-end-title", "screen-end-message", "btn-end-next",
-    "global-intro-title", "global-intro-input", "global-intro-error", "global-intro-display", "btn-global-intro-next",
+    "global-intro-title", "global-intro-code-field", "global-intro-input", "global-intro-error", "global-intro-display",
+    "global-intro-demo-note", "btn-global-intro-next", "btn-global-intro-demo",
     "session-overview-summary", "session-overview-list", "btn-session-overview-next",
     "instructions-position", "instructions-title", "instructions-lines", "instructions-selectors",
     "btn-start", "intro-suggestion-note", "select-variant", "select-n",
@@ -362,6 +363,7 @@ async function main() {
     // Pojedinacan zadatak (pilot/debag preko eksplicitnog URL parametra,
     // ili ugradjeni/demo rezim) -- isti tok kao pre integracije sesije.
     let codeValidator = null;
+    let demoOnly = false;
     if (!embedded) {
       let codesData;
       try {
@@ -371,9 +373,10 @@ async function main() {
         return;
       }
       codeValidator = createCodeValidator(codesData);
+      demoOnly = !!codesData.demo_only;
     }
     const known = params.participant || (embedded ? EMBEDDED_DEFAULTS.participant : null);
-    const codeResult = await runGlobalIntroScreen(known, codeValidator);
+    const codeResult = await runGlobalIntroScreen(known, codeValidator, { demoOnly });
     params.participant = codeResult.code;
     await runSessionOverviewScreen(instructionsData);
   }

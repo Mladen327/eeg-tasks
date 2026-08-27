@@ -174,8 +174,26 @@ function sessionLogFields(session, order, taskId) {
    validator: async (code) => {valid, sessionNumber?, error?}, ili null za
    ugradjeni (demo) rezim (bez provere liste, bez broja sesije).
    Vraca Promise<{code, sessionNumber}> -- sifra je VELIKIM SLOVIMA. */
-function runGlobalIntroScreen(participantKnown, validator) {
+function runGlobalIntroScreen(participantKnown, validator, opts) {
+  opts = opts || {};
   els["global-intro-title"].textContent = STUDY_TITLE;
+
+  // Prikazna (GitHub Pages) instanca: provera prave sifre ne moze da radi
+  // jer se stvarna data/participant_codes.json namerno nikad ne objavljuje
+  // (sadrzi dodele ispitanicima). Umesto polja za unos i poruke "nepoznata
+  // sifra", nudi se direktno dugme koje pokrece sesiju sa sifrom DEMO.
+  if (opts.demoOnly) {
+    els["global-intro-code-field"].classList.add("hidden");
+    els["global-intro-error"].classList.add("hidden");
+    els["global-intro-display"].classList.add("hidden");
+    els["global-intro-demo-note"].classList.remove("hidden");
+    els["btn-global-intro-next"].classList.add("hidden");
+    els["btn-global-intro-demo"].classList.remove("hidden");
+    showScreen("global-intro");
+    return new Promise((resolve) => {
+      els["btn-global-intro-demo"].onclick = () => resolve({ code: "DEMO", sessionNumber: null });
+    });
+  }
 
   return new Promise((resolve) => {
     let confirmed = null; // {code, sessionNumber}
@@ -430,7 +448,7 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
   const requestedDemo = urlParams.get("demo") === "1";
 
   const codeValidator = createCodeValidator(codesData);
-  const { code, sessionNumber } = await runGlobalIntroScreen(null, codeValidator);
+  const { code, sessionNumber } = await runGlobalIntroScreen(null, codeValidator, { demoOnly: !!codesData.demo_only });
 
   const recovered = await loadSessionStateFromDb(code);
   if (recovered && recovered.completed.length < recovered.order.length) {
