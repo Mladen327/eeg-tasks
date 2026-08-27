@@ -63,14 +63,19 @@ function resolveParamsCore(params, embedded, embeddedDefaults, config) {
     return result;
   }
 
-  const extraValid = cfg.validate ? cfg.validate(params) : true;
-  if (!params.participant || ![3, 5, 7].includes(params.n) || !extraValid) {
-    result.fatal = cfg.fatalMessage || "Nedostaju ili su neispravni URL parametri.";
-    return result;
-  }
-  result.participantId = params.participant;
-  result.n = params.n;
+  // Server/sesijski rezim: sifra ovde vec STIZE sa ekrana za unos sifre (ili
+  // iz sacuvanog/oporavljenog sesijskog stanja, core/intro.js) -- nikad se
+  // vise ne ocekuje direktno kao URL parametar kucan rucno (ta pretpostavka
+  // je poticala iz verzije PRE uvodjenja sifri, kad su ucesnici bili
+  // hardkodovani identifikatori P01..P40 koji se navode u ?participant=...).
+  // Ta stara identifikacija ne postoji vise, pa je fatalna provera na
+  // nedostajuci/neispravan URL parametar uklonjena -- nedostajuci ili
+  // neispravan N (ili S3-ov variant), npr. dugme "Demonstracija" na GitHub
+  // Pages koje ne prosledjuje ?n=, sad dobija ISTU podrazumevanu vrednost
+  // kao ugradjena/samostalna verzija, umesto da prekine sesiju greskom.
+  result.participantId = params.participant || embeddedDefaults.participant;
+  result.n = [3, 5, 7].includes(params.n) ? params.n : embeddedDefaults.n;
   result.isDemo = !!params.demo;
-  if (cfg.serverExtra) cfg.serverExtra(result, params);
+  if (cfg.serverExtra) cfg.serverExtra(result, params, embeddedDefaults);
   return result;
 }

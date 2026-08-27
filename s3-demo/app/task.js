@@ -382,22 +382,18 @@ async function main() {
   }
 
   const resolved = resolveParamsCore(params, embedded, EMBEDDED_DEFAULTS, {
-    validate: (p) => ["S3a", "S3b"].includes(p.variant),
-    fatalMessage: "Nedostaju ili su neispravni URL parametri. Ocekivano: ?participant=P07&variant=S3b&n=5",
     practiceExtra: (r) => { r.effectiveVariant = "S3a"; },
-    // Samostalna verzija: bez tvrde provere. Nedostajuci ili neispravni
-    // parametri dobijaju podrazumevane vrednosti; svaki URL parametar koji
-    // JESTE naveden i validan ima prednost nad svojom podrazumevanom
+    // Bez tvrde provere: nedostajuci ili neispravni parametri (URL i server
+    // rezim podjednako) dobijaju podrazumevanu vrednost; svaki URL parametar
+    // koji JESTE naveden i validan ima prednost nad svojom podrazumevanom
     // vrednoscu (nezavisno po parametru).
     embeddedExtra: (r, p, defaults) => {
       r.effectiveVariant = ["S3a", "S3b"].includes(p.variant) ? p.variant : defaults.variant;
     },
-    serverExtra: (r, p) => { r.effectiveVariant = p.variant; },
+    serverExtra: (r, p, defaults) => {
+      r.effectiveVariant = ["S3a", "S3b"].includes(p.variant) ? p.variant : defaults.variant;
+    },
   });
-  if (resolved.fatal) {
-    showFatal(resolved.fatal);
-    return;
-  }
   const isPractice = resolved.isPractice, participantId = resolved.participantId, isDemo = resolved.isDemo;
   let n = resolved.n, effectiveVariant = resolved.effectiveVariant;
 
