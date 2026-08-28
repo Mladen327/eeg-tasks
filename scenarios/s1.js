@@ -64,7 +64,7 @@ function cacheEls() {
     "screen-loading", "screen-global-intro", "screen-session-overview", "screen-instructions",
     "screen-task", "screen-gap", "screen-end", "screen-end-title", "screen-end-message", "btn-end-next",
     "global-intro-title", "global-intro-code-field", "global-intro-input", "global-intro-error", "global-intro-display",
-    "global-intro-demo-note", "btn-global-intro-next", "btn-global-intro-demo",
+    "global-intro-demo-note", "global-intro-device-note", "btn-global-intro-next", "btn-global-intro-demo",
     "session-overview-summary", "session-overview-list", "btn-session-overview-next",
     "session-overview-n-selector", "select-session-n",
     "instructions-position", "instructions-title", "instructions-lines", "instructions-selectors",

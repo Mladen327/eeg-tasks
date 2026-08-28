@@ -187,6 +187,7 @@ function runGlobalIntroScreen(participantKnown, validator, opts) {
     els["global-intro-error"].classList.add("hidden");
     els["global-intro-display"].classList.add("hidden");
     els["global-intro-demo-note"].classList.remove("hidden");
+    els["global-intro-device-note"].classList.remove("hidden");
     els["btn-global-intro-next"].classList.add("hidden");
     els["btn-global-intro-demo"].classList.remove("hidden");
     showScreen("global-intro");
