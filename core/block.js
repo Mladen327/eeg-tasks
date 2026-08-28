@@ -118,7 +118,10 @@ function showScreen(name) {
 async function runBlockCore(ctx, itemRunner) {
   const { participantId, variant, n, items, isDemo } = ctx;
 
-  window.addEventListener("resize", onResizeAbort);
+  // Demo rezim ne meri nista (nema svrhu da prekida sesiju), a na telefonu
+  // se visina prozora menja sama (adresna traka, tastatura) -- zastita
+  // ostaje NEPROMENJENA za stvarnu sesiju.
+  if (!isDemo) window.addEventListener("resize", onResizeAbort);
 
   Logger.log({ event: "block_start", n_fields: n, variant, planned_items: items.length });
 
@@ -139,7 +142,7 @@ async function runBlockCore(ctx, itemRunner) {
     if (!sessionAborted) showScreen("task");
   }
 
-  window.removeEventListener("resize", onResizeAbort);
+  if (!isDemo) window.removeEventListener("resize", onResizeAbort);
 
   Logger.log({ event: "block_end", items_completed: completed, elapsed_ms: round1(performance.now() - blockStart) });
 
