@@ -33,6 +33,23 @@
       <h1>Tok sesije</h1>
       <ul id="session-overview-list" class="task-list"></ul>
       <p id="session-overview-summary"></p>
+
+      <div id="session-overview-n-selector" class="intro-selectors hidden">
+        <p class="intro-note">
+          N označava broj stavki koje se istovremeno drže u pamćenju tokom
+          zadatka — to je nivo opterećenja koji se u ovoj studiji menja.
+          Izabrana vrednost važi za sva tri zadatka ove sesije.
+        </p>
+        <label>
+          Broj stavki (N)
+          <select id="select-session-n">
+            <option value="3">3</option>
+            <option value="5" selected>5</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+      </div>
+
       <button id="btn-session-overview-next">Dalje</button>
     </div>
   </div>

@@ -66,6 +66,7 @@ function cacheEls() {
     "global-intro-title", "global-intro-code-field", "global-intro-input", "global-intro-error", "global-intro-display",
     "global-intro-demo-note", "btn-global-intro-next", "btn-global-intro-demo",
     "session-overview-summary", "session-overview-list", "btn-session-overview-next",
+    "session-overview-n-selector", "select-session-n",
     "instructions-position", "instructions-title", "instructions-lines", "instructions-selectors",
     "btn-start", "select-n",
     "progress-bar", "counter-item", "counter-phase",
