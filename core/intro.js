@@ -240,8 +240,17 @@ function runGlobalIntroScreen(participantKnown, validator, opts) {
   });
 }
 
-/* ---- Ekran 2: pregled sesije ---- */
-function runSessionOverviewScreen(instructionsData) {
+/* ---- Ekran 2: pregled sesije ----
+   opts.showNSelector: SAMO demo rezim integrisane sesije (runSessionOrchestration,
+   isDemoCode) -- u stvarnoj sesiji je N vec odredjen dodelom/URL parametrom,
+   ispitanik ga ne bira (vidi poziv u runSessionOrchestration ispod).
+   Vraca Promise<number|null> -- izabrano N (kad je opts.showNSelector) ili
+   null (van demo rezima, izbor se ne prikazuje/ne menja). Izabrana vrednost
+   vazi za sva tri zadatka sesije -- bira se OVDE, jednom, ne ponovo pred
+   svaki zadatak (za razliku od #instructions-selectors, koji ostaje
+   rezervisan za istinski ugradjenu/samostalnu verziju van orkestracije). */
+function runSessionOverviewScreen(instructionsData, opts) {
+  opts = opts || {};
   els["session-overview-summary"].textContent = instructionsData.session_summary;
   els["session-overview-list"].innerHTML = "";
   for (const t of instructionsData.tasks) {
@@ -249,9 +258,12 @@ function runSessionOverviewScreen(instructionsData) {
     li.textContent = t.name;
     els["session-overview-list"].appendChild(li);
   }
+  els["session-overview-n-selector"].classList.toggle("hidden", !opts.showNSelector);
   showScreen("session-overview");
   return new Promise((resolve) => {
-    els["btn-session-overview-next"].onclick = () => resolve();
+    els["btn-session-overview-next"].onclick = () => {
+      resolve(opts.showNSelector ? parseInt(els["select-session-n"].value, 10) : null);
+    };
   });
 }
 
@@ -499,8 +511,10 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
   // pretpostavke iz drugog fajla.
   const isDemoCode = code === "DEMO";
   const recovered = isDemoCode ? null : await loadSessionStateFromDb(code);
+  let isFreshSession = true;
   if (recovered && recovered.completed.length < recovered.order.length) {
     session = recovered;
+    isFreshSession = false;
   } else {
     // n/variant dolaze iz URL-a SAMO pri stvaranju nove sesije (prvi
     // zadatak) -- sva tri zadatka te sesije ih posle dele preko
@@ -521,7 +535,19 @@ async function runSessionOrchestration(taskId, codesData, instructionsData) {
   }
   saveSessionState(session);
 
-  await runSessionOverviewScreen(instructionsData);
+  // Izbor N (3/5/7) na ekranu pregleda sesije -- SAMO za svezu demo sesiju
+  // (isDemoCode; "DEMO" nikad ne oporavlja stanje preko IndexedDB, pa je
+  // isFreshSession za nju uvek true). Stvarna sesija (prava sifra) ovde
+  // nikad ne prikazuje izbornik -- njeno N dolazi iz dodele/URL parametra,
+  // nepromenjeno. Izabrano N se upisuje u session.n i putuje kroz
+  // redirectToTask() u sva tri zadatka ove sesije -- bira se samo ovde.
+  const chosenN = await runSessionOverviewScreen(instructionsData, {
+    showNSelector: isDemoCode && isFreshSession,
+  });
+  if (chosenN != null) {
+    session.n = chosenN;
+    saveSessionState(session);
+  }
 
   const nextTaskId = session.order[session.completed.length];
   if (nextTaskId !== taskId) {
