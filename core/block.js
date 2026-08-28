@@ -116,12 +116,16 @@ function showScreen(name) {
 }
 
 async function runBlockCore(ctx, itemRunner) {
-  const { participantId, variant, n, items, isDemo } = ctx;
+  const { participantId, variant, n, items, isDemo, isPractice } = ctx;
 
-  // Demo rezim ne meri nista (nema svrhu da prekida sesiju), a na telefonu
-  // se visina prozora menja sama (adresna traka, tastatura) -- zastita
-  // ostaje NEPROMENJENA za stvarnu sesiju.
-  if (!isDemo) window.addEventListener("resize", onResizeAbort);
+  // Demo rezim I vezba (practice=1) ne idu u analizu (practice pise u
+  // logs/practice/, odvojeno) -- na telefonu se visina prozora menja sama
+  // (adresna traka, tastatura), pa zastita tamo nema svrhu. Zastita ostaje
+  // NEPROMENJENA za stvarnu (mereni blok) sesiju -- BLOCK_DURATION_MS
+  // provera ispod OSTAJE gated samo na isDemo, ne i na isPractice (vezba i
+  // dalje ima isto vremensko ogranicenje kao stvaran blok, namerno).
+  const resizeProtected = !isDemo && !isPractice;
+  if (resizeProtected) window.addEventListener("resize", onResizeAbort);
 
   Logger.log({ event: "block_start", n_fields: n, variant, planned_items: items.length });
 
@@ -142,7 +146,7 @@ async function runBlockCore(ctx, itemRunner) {
     if (!sessionAborted) showScreen("task");
   }
 
-  if (!isDemo) window.removeEventListener("resize", onResizeAbort);
+  if (resizeProtected) window.removeEventListener("resize", onResizeAbort);
 
   Logger.log({ event: "block_end", items_completed: completed, elapsed_ms: round1(performance.now() - blockStart) });
 
